@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Happy Teachers' Day</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --purple-deep:#1c1032;
+    --purple:#2c1a52;
+    --purple-mid:#3a2170;
+    --blue-royal:#2f3a8f;
+    --blue-glow:#5a6bd6;
+    --gold:#f0c75e;
+    --gold-soft:#f7dd97;
+    --pink:#f1a8c9;
+    --pink-soft:#f8cfe1;
+    --white:#fbf7f0;
+    --ink:#1a1230;
+    --glass:rgba(251,247,240,0.08);
+    --glass-border:rgba(247,221,151,0.28);
+    --shadow-gold:0 0 40px rgba(240,199,94,0.25);
+    --font-display:'Fraunces', serif;
+    --font-body:'Plus Jakarta Sans', sans-serif;
+    --font-script:'Caveat', cursive;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    font-family:var(--font-body);
+    background:
+      radial-gradient(ellipse 120% 80% at 50% -10%, var(--purple-mid) 0%, transparent 55%),
+      radial-gradient(ellipse 100% 60% at 85% 30%, rgba(47,58,143,0.55) 0%, transparent 60%),
+      linear-gradient(180deg, var(--purple-deep) 0%, #150b28 55%, #0f0820 100%);
+    color:var(--white);
+    overflow-x:hidden;
+    min-height:100vh;
+  }
+
+  a{text-decoration:none;color:inherit;}
+  button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit;}
+  img{max-width:100%;display:block;}
+
+  ::selection{background:var(--gold);color:var(--ink);}
+
+  /* Scrollbar */
+  ::-webkit-scrollbar{width:10px;}
+  ::-webkit-scrollbar-track{background:var(--purple-deep);}
+  ::-webkit-scrollbar-thumb{background:linear-gradient(var(--gold),var(--pink));border-radius:10px;}
+
+  /* ===== Star field ===== */
+  #starfield{position:fixed;inset:0;z-index:0;pointer-events:none;}
+  .star{
+    position:absolute;
+    width:2px;height:2px;
+    background:var(--gold-soft);
+    border-radius:50%;
+    opacity:.6;
+    animation:twinkle 4s ease-in-out infinite;
+  }
+  @keyframes twinkle{
+    0%,100%{opacity:.15;transform:scale(1);}
+    50%{opacity:.9;transform:scale(1.6);}
+  }
+
+  /* ===== Cursor trail dust ===== */
+  .dust{
+    position:fixed;
+    width:6px;height:6px;
+    border-radius:50%;
+    background:radial-gradient(circle, var(--gold) 0%, transparent 70%);
+    pointer-events:none;
+    z-index:9999;
+    opacity:.9;
+    transform:translate(-50%,-50%);
+    animation:dustFade 900ms ease-out forwards;
+  }
+  @keyframes dustFade{
+    to{opacity:0;transform:translate(-50%,-50%) scale(0.2) translateY(20px);}
+  }
+
+  /* ===== Top nav ===== */
+  .topnav{
+    position:fixed;top:0;left:0;right:0;z-index:500;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:20px clamp(20px,5vw,56px);
+    backdrop-filter:blur(14px);
+    background:linear-gradient(180deg, rgba(28,16,50,0.65), rgba(28,16,50,0));
+    transition:background .4s ease, opacity .3s ease, transform .3s ease;
+  }
+  .topnav.hidden{opacity:0;transform:translateY(-12px);pointer-events:none;}
+  .brand{
+    font-family:var(--font-display);
+    font-weight:600;
+    font-size:1.15rem;
+    letter-spacing:.02em;
+    display:flex;align-items:center;gap:10px;
+  }
+  .brand-mark{
+    width:30px;height:30px;
+    display:grid;place-items:center;
+    filter:drop-shadow(0 0 8px rgba(240,199,94,.7));
+  }
+  .music-toggle{
+    display:flex;align-items:center;gap:10px;
+    padding:9px 16px;
+    border:1px solid var(--glass-border);
+    border-radius:999px;
+    background:var(--glass);
+    font-size:.82rem;
+    font-weight:600;
+    letter-spacing:.02em;
+    transition:box-shadow .3s ease, transform .2s ease, background .3s ease;
+  }
+  .music-toggle:hover{transform:translateY(-2px);box-shadow:var(--shadow-gold);}
+  .music-toggle .dot{
+    width:8px;height:8px;border-radius:50%;
+    background:#8b83a8;
+    transition:all .3s ease;
+  }
+  .music-toggle.on .dot{
+    background:var(--gold);
+    box-shadow:0 0 10px var(--gold);
+    animation:pulseDot 1.2s ease-in-out infinite;
+  }
+  @keyframes pulseDot{0%,100%{transform:scale(1);}50%{transform:scale(1.5);}}
+  .music-bars{display:flex;gap:2px;align-items:flex-end;height:10px;}
+  .music-bars span{width:2.5px;background:var(--gold);border-radius:2px;height:3px;transition:height .2s;}
+  .music-toggle.on .music-bars span{animation:bar 900ms ease-in-out infinite;}
+  .music-bars span:nth-child(1){animation-delay:0s;}
+  .music-bars span:nth-child(2){animation-delay:.15s;}
+  .music-bars span:nth-child(3){animation-delay:.3s;}
+  @keyframes bar{0%,100%{height:3px;}50%{height:10px;}}
+
+  /* ===== Hero ===== */
+  .hero{
+    position:relative;
+    min-height:100vh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;
+    padding:120px 20px 80px;
+    perspective:1200px;
+    overflow:hidden;
+  }
+  .hero-glow{
+    position:absolute;
+    top:38%;left:50%;
+    width:min(900px,120vw);height:min(900px,120vw);
+    transform:translate(-50%,-50%);
+    background:radial-gradient(circle, rgba(240,199,94,0.18) 0%, rgba(90,107,214,0.10) 40%, transparent 70%);
+    filter:blur(20px);
+    pointer-events:none;
+    z-index:0;
+  }
+  .eyebrow{
+    position:relative;z-index:2;
+    font-size:.78rem;
+    letter-spacing:.32em;
+    text-transform:uppercase;
+    color:var(--gold-soft);
+    font-weight:600;
+    margin-bottom:22px;
+    opacity:0;
+    animation:fadeUp 1s ease .2s forwards;
+  }
+  .hero h1{
+    position:relative;z-index:2;
+    font-family:var(--font-display);
+    font-weight:600;
+    font-size:clamp(2.6rem, 8vw, 6.4rem);
+    line-height:1.04;
+    letter-spacing:-.01em;
+    background:linear-gradient(180deg, #fffdf6 10%, var(--gold-soft) 55%, var(--gold) 100%);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+    text-shadow:0 0 60px rgba(240,199,94,0.25);
+    opacity:0;
+    animation:fadeUp 1.1s ease .35s forwards;
+  }
+  .hero h1 em{
+    font-style:italic;
+    background:linear-gradient(180deg,var(--pink-soft),var(--pink));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .hero p.sub{
+    position:relative;z-index:2;
+    margin-top:22px;
+    font-size:clamp(1.02rem,2.4vw,1.35rem);
+    color:#e7e0f5;
+    font-weight:400;
+    max-width:640px;
+    opacity:0;
+    animation:fadeUp 1.1s ease .55s forwards;
+  }
+  @keyframes fadeUp{
+    from{opacity:0;transform:translateY(26px);}
+    to{opacity:1;transform:translateY(0);}
+  }
+
+  .hero-cta{
+    position:relative;z-index:2;
+    margin-top:44px;
+    display:inline-flex;align-items:center;gap:12px;
+    padding:16px 34px;
+    border-radius:999px;
+    font-weight:700;
+    font-size:1rem;
+    letter-spacing:.01em;
+    color:var(--ink);
+    background:linear-gradient(120deg, var(--gold-soft), var(--gold) 60%, var(--pink-soft));
+    box-shadow:0 10px 40px rgba(240,199,94,0.35), inset 0 1px 0 rgba(255,255,255,0.6);
+    opacity:0;
+    animation:fadeUp 1.1s ease .75s forwards;
+    transition:transform .35s cubic-bezier(.2,.9,.3,1.3), box-shadow .35s ease;
+  }
+  .hero-cta:hover{transform:translateY(-4px) scale(1.035);box-shadow:0 16px 50px rgba(240,199,94,0.5);}
+  .hero-cta svg{width:18px;height:18px;transition:transform .4s ease;}
+  .hero-cta:hover svg{transform:translateY(3px);}
+
+  .scroll-hint{
+    position:absolute;bottom:36px;left:50%;transform:translateX(-50%);
+    display:flex;flex-direction:column;align-items:center;gap:8px;
+    font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:#9d92c0;
+    opacity:0;animation:fadeUp 1s ease 1.1s forwards;
+    z-index:2;
+  }
+  .scroll-hint .line{width:1px;height:34px;background:linear-gradient(var(--gold),transparent);animation:scrollLine 2s ease-in-out infinite;}
+  @keyframes scrollLine{0%{transform:scaleY(0);transform-origin:top;}50%{transform:scaleY(1);transform-origin:top;}51%{transform-origin:bottom;}100%{transform:scaleY(0);transform-origin:bottom;}}
+
+  /* Floating 3D objects */
+  .float-layer{position:absolute;inset:0;pointer-events:none;z-index:1;transform-style:preserve-3d;}
+  .floatie{
+    position:absolute;
+    filter:drop-shadow(0 8px 20px rgba(0,0,0,0.35));
+    animation:bob 7s ease-in-out infinite;
+    will-change:transform;
+    opacity:.92;
+  }
+  .floatie svg{display:block;}
+  @keyframes bob{
+    0%,100%{transform:translateY(0) rotate(var(--rot,0deg));}
+    50%{transform:translateY(-26px) rotate(calc(var(--rot,0deg) + 6deg));}
+  }
+
+  /* ===== Section shell ===== */
+  section{position:relative;z-index:1;}
+  .section-inner{max-width:1240px;margin:0 auto;padding:0 clamp(20px,5vw,56px);}
+  .section-head{text-align:center;max-width:640px;margin:0 auto 56px;}
+  .section-eyebrow{
+    font-size:.75rem;letter-spacing:.28em;text-transform:uppercase;
+    color:var(--gold-soft);font-weight:600;margin-bottom:14px;
+  }
+  .section-title{
+    font-family:var(--font-display);
+    font-weight:600;
+    font-size:clamp(1.9rem,4.4vw,3.1rem);
+    line-height:1.15;
+    color:var(--white);
+  }
+  .section-title span{
+    background:linear-gradient(120deg,var(--gold-soft),var(--pink-soft));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    font-style:italic;
+  }
+  .section-desc{margin-top:16px;color:#cfc6e6;font-size:1.02rem;line-height:1.6;}
+
+  .reveal{opacity:0;transform:translateY(40px);transition:opacity .9s cubic-bezier(.2,.7,.2,1), transform .9s cubic-bezier(.2,.7,.2,1);}
+  .reveal.in{opacity:1;transform:translateY(0);}
+
+  /* ===== Gallery ===== */
+  .gallery{padding:60px 0 60px;}
+  .teacher-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(255px,1fr));
+    gap:32px;
+  }
+  .tcard{
+    position:relative;
+    border-radius:26px;
+    padding:2px;
+    background:linear-gradient(160deg, rgba(247,221,151,0.55), rgba(241,168,201,0.15) 40%, rgba(47,58,143,0.4));
+    transform-style:preserve-3d;
+    transition:transform .12s ease-out, box-shadow .4s ease;
+    cursor:pointer;
+  }
+  .tcard-inner{
+    position:relative;
+    border-radius:24px;
+    padding:30px 26px 26px;
+    height:100%;
+    background:linear-gradient(160deg, rgba(58,33,112,0.7), rgba(28,16,50,0.85));
+    backdrop-filter:blur(16px);
+    overflow:hidden;
+    display:flex;flex-direction:column;align-items:center;text-align:center;
+    transform:translateZ(20px);
+  }
+  .tcard-sheen{
+    position:absolute;inset:0;
+    background:radial-gradient(circle at var(--mx,50%) var(--my,20%), rgba(255,255,255,0.16), transparent 55%);
+    opacity:0;transition:opacity .35s ease;
+    pointer-events:none;
+  }
+  .tcard:hover{box-shadow:0 25px 60px rgba(240,199,94,0.22), 0 0 0 1px rgba(240,199,94,0.3);}
+  .tcard:hover .tcard-sheen{opacity:1;}
+  .tcard-photo{
+    width:112px;height:112px;border-radius:50%;
+    padding:4px;
+    background:linear-gradient(135deg,var(--gold),var(--pink));
+    margin-bottom:18px;
+    transition:transform .4s ease;
+  }
+  .tcard:hover .tcard-photo{transform:scale(1.06) translateZ(10px);}
+  .tcard-photo img{border-radius:50%;width:100%;height:100%;object-fit:cover;background:var(--purple);}
+  .tcard-name{font-family:var(--font-display);font-size:1.28rem;font-weight:600;margin-bottom:4px;}
+  .tcard-role{font-size:.83rem;color:var(--gold-soft);letter-spacing:.03em;font-weight:600;margin-bottom:16px;}
+  .tcard-quote{
+    font-family:var(--font-script);
+    font-size:1.28rem;
+    line-height:1.35;
+    color:var(--pink-soft);
+    max-height:0;
+    opacity:0;
+    overflow:hidden;
+    transition:max-height .45s ease, opacity .4s ease, margin .4s ease;
+  }
+  .tcard:hover .tcard-quote{max-height:120px;opacity:1;margin-bottom:12px;}
+  .tcard-btn{
+    margin-top:14px;
+    padding:10px 22px;
+    border-radius:999px;
+    font-size:.82rem;font-weight:700;letter-spacing:.02em;
+    border:1px solid rgba(247,221,151,0.4);
+    background:rgba(240,199,94,0.08);
+    color:var(--gold-soft);
+    transition:all .3s ease;
+    display:inline-flex;align-items:center;gap:8px;
+  }
+  .tcard-btn:hover{background:linear-gradient(120deg,var(--gold-soft),var(--gold));color:var(--ink);transform:translateY(-2px);box-shadow:0 8px 24px rgba(240,199,94,0.35);}
+  .tcard-btn svg{width:13px;height:13px;}
+
+  /* ===== Thank you ===== */
+  .thankyou{
+    padding:150px 0 130px;
+    text-align:center;
+    position:relative;
+  }
+  .thankyou h2{
+    font-family:var(--font-display);
+    font-weight:600;
+    font-size:clamp(2rem,5.5vw,4rem);
+    line-height:1.2;
+    max-width:820px;margin:0 auto;
+    background:linear-gradient(120deg,#fffdf6, var(--gold-soft) 45%, var(--pink-soft));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .thankyou p{margin-top:20px;color:#cfc6e6;font-size:1.05rem;}
+  .thankyou-glow{
+    position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+    width:600px;height:600px;
+    background:radial-gradient(circle, rgba(241,168,201,0.16), transparent 65%);
+    filter:blur(30px);
+    z-index:-1;
+  }
+
+  footer{
+    text-align:center;
+    padding:36px 20px 44px;
+    font-size:.78rem;
+    color:#8b81ab;
+    letter-spacing:.03em;
+  }
+
+  /* ===== Teacher Profile View ===== */
+  .profile-view{
+    position:fixed;inset:0;
+    z-index:800;
+    background:
+      radial-gradient(ellipse 120% 80% at 50% -10%, var(--purple-mid) 0%, transparent 55%),
+      linear-gradient(180deg, var(--purple-deep) 0%, #150b28 55%, #0f0820 100%);
+    overflow-y:auto;
+    display:none;
+    opacity:0;
+    transition:opacity .45s ease;
+  }
+  .profile-view.active{display:block;}
+  .profile-view.show{opacity:1;}
+  .profile-inner{
+    max-width:980px;margin:0 auto;
+    padding:110px clamp(20px,5vw,56px) 100px;
+    display:flex;flex-direction:column;align-items:center;text-align:center;
+  }
+  .back-btn{
+    position:fixed;top:22px;left:clamp(20px,5vw,56px);z-index:900;
+    display:inline-flex;align-items:center;gap:8px;
+    padding:10px 18px 10px 14px;
+    border-radius:999px;
+    background:rgba(251,247,240,0.08);
+    border:1px solid var(--glass-border);
+    font-size:.82rem;font-weight:600;
+    backdrop-filter:blur(12px);
+    transition:all .3s ease;
+  }
+  .back-btn:hover{background:rgba(240,199,94,0.15);transform:translateX(-3px);}
+  .back-btn svg{width:15px;height:15px;}
+
+  .profile-photo-wrap{
+    position:relative;
+    width:min(280px,60vw);height:min(280px,60vw);
+    margin-bottom:34px;
+  }
+  .profile-photo-glow{
+    position:absolute;inset:-30px;
+    background:radial-gradient(circle, rgba(240,199,94,0.35), transparent 65%);
+    filter:blur(10px);
+    animation:pulseGlow 3.4s ease-in-out infinite;
+  }
+  @keyframes pulseGlow{0%,100%{opacity:.6;transform:scale(1);}50%{opacity:1;transform:scale(1.08);}}
+  .profile-photo{
+    position:relative;z-index:2;
+    width:100%;height:100%;border-radius:50%;
+    padding:6px;
+    background:linear-gradient(135deg,var(--gold),var(--pink),var(--blue-glow));
+    box-shadow:0 20px 60px rgba(0,0,0,0.4);
+  }
+  .profile-photo img{width:100%;height:100%;border-radius:50%;object-fit:cover;background:var(--purple);}
+  .profile-deco{position:absolute;inset:-70px;pointer-events:none;z-index:1;}
+  .deco-item{position:absolute;animation:decoFloat 6s ease-in-out infinite;filter:drop-shadow(0 6px 14px rgba(0,0,0,.3));}
+  @keyframes decoFloat{0%,100%{transform:translateY(0) rotate(0deg);}50%{transform:translateY(-16px) rotate(10deg);}}
+
+  .profile-eyebrow{font-size:.75rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold-soft);font-weight:700;margin-bottom:12px;}
+  .profile-name{font-family:var(--font-display);font-weight:600;font-size:clamp(2rem,5vw,3.2rem);margin-bottom:8px;}
+  .profile-role{color:var(--pink-soft);font-weight:600;font-size:1.02rem;margin-bottom:30px;}
+  .profile-quote{
+    font-family:var(--font-script);
+    font-size:clamp(1.3rem,2.6vw,1.7rem);
+    color:var(--gold-soft);
+    max-width:560px;
+    margin-bottom:30px;
+    line-height:1.4;
+  }
+  .profile-para{
+    max-width:620px;
+    color:#dcd4f0;
+    font-size:1.05rem;
+    line-height:1.85;
+    margin-bottom:44px;
+  }
+
+  .profile-nav{
+    display:flex;align-items:center;gap:18px;
+    flex-wrap:wrap;justify-content:center;
+  }
+  .nav-btn{
+    display:flex;align-items:center;gap:10px;
+    padding:13px 24px;
+    border-radius:999px;
+    border:1px solid var(--glass-border);
+    background:var(--glass);
+    font-weight:600;font-size:.88rem;
+    transition:all .3s ease;
+  }
+  .nav-btn:hover{background:rgba(240,199,94,0.15);transform:translateY(-3px);box-shadow:var(--shadow-gold);}
+  .nav-btn svg{width:15px;height:15px;transition:transform .3s ease;}
+  .nav-btn.prev:hover svg{transform:translateX(-3px);}
+  .nav-btn.next:hover svg{transform:translateX(3px);}
+  .nav-btn.gallery-btn{
+    background:linear-gradient(120deg,var(--gold-soft),var(--gold));
+    color:var(--ink);border:none;
+  }
+
+  /* Focus visibility for a11y */
+  a:focus-visible, button:focus-visible{
+    outline:2px solid var(--gold);
+    outline-offset:3px;
+    border-radius:8px;
+  }
+
+  @media (max-width:640px){
+    .teacher-grid{grid-template-columns:repeat(auto-fill, minmax(220px,1fr));gap:20px;}
+    .floatie{transform:scale(.7);}
+  }
+
+  /* ===== Portal transition (Meet Our Teachers) ===== */
+  .portal{
+    position:fixed;inset:0;z-index:2000;
+    background:
+      radial-gradient(circle at 50% 40%, rgba(247,221,151,0.95) 0%, rgba(240,199,94,0.96) 30%, rgba(58,33,112,0.98) 68%, rgba(28,16,50,0.99) 100%);
+    clip-path:circle(0% at var(--ox,50%) var(--oy,50%));
+    opacity:0;
+    pointer-events:none;
+    display:flex;align-items:center;justify-content:center;
+    transition:clip-path .75s cubic-bezier(.4,0,.15,1), opacity .2s ease;
+  }
+  .portal.show{opacity:1;pointer-events:auto;}
+  .portal.expand{clip-path:circle(145% at var(--ox,50%) var(--oy,50%));}
+  .portal.contract{clip-path:circle(0% at var(--cx,50%) var(--cy,50%)); transition:clip-path .75s cubic-bezier(.4,0,.15,1), opacity .2s ease .55s; opacity:0;}
+  .portal-mark{
+    opacity:0;
+    transform:scale(.6) rotate(-15deg);
+    transition:opacity .35s ease .25s, transform .5s cubic-bezier(.2,.8,.2,1.2) .25s;
+  }
+  .portal.expand .portal-mark{opacity:1;transform:scale(1) rotate(0deg);}
+  .portal-mark svg{width:min(120px,18vw);height:min(120px,18vw);filter:drop-shadow(0 0 30px rgba(255,255,255,0.6));}
+
+  .burst-particle{
+    position:fixed;z-index:1999;pointer-events:none;
+    border-radius:50%;
+    background:radial-gradient(circle, var(--gold) 0%, var(--pink) 60%, transparent 75%);
+    animation:burstOut var(--dur,700ms) cubic-bezier(.15,.7,.3,1) forwards;
+  }
+  @keyframes burstOut{
+    from{transform:translate(-50%,-50%) scale(1); opacity:1;}
+    to{transform:translate(calc(-50% + var(--bx)), calc(-50% + var(--by))) scale(0); opacity:0;}
+  }
+
+  /* Touch-friendly card reveal (mirrors :hover styles) */
+  .tcard.touched .tcard-sheen{opacity:1;}
+  .tcard.touched .tcard-photo{transform:scale(1.06);}
+  .tcard.touched .tcard-quote{max-height:120px;opacity:1;margin-bottom:12px;}
+  .tcard.touched{box-shadow:0 25px 60px rgba(240,199,94,0.22), 0 0 0 1px rgba(240,199,94,0.3);}
+
+  button, a{touch-action:manipulation;}
+
+  @supports(padding:max(0px)){
+    .topnav{padding-top:max(20px, env(safe-area-inset-top));}
+    .back-btn{top:max(22px, env(safe-area-inset-top));}
+    footer{padding-bottom:max(44px, env(safe-area-inset-bottom));}
+  }
+
+  @media (max-width:420px){
+    .topnav{padding-left:16px;padding-right:16px;}
+    .brand{font-size:1rem;}
+    .music-toggle{padding:8px 12px;gap:7px;}
+    #musicLabel{display:none;}
+    .hero{padding-top:100px;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.001ms !important;animation-iteration-count:1 !important;transition-duration:0.001ms !important;scroll-behavior:auto !important;}
+  }
+</style>
+</head>
+<body>
+
+<div id="starfield"></div>
+<div class="portal" id="portal">
+  <span class="portal-mark">
+    <svg viewBox="0 0 24 24" fill="none"><path d="M12 2l2.2 6.8L21 11l-6.8 2.2L12 20l-2.2-6.8L3 11l6.8-2.2L12 2z" fill="#2c1a52"/></svg>
+  </span>
+</div>
+
+<nav class="topnav">
+  <div class="brand">
+    <span class="brand-mark">
+      <svg viewBox="0 0 24 24" width="28" height="28" fill="none"><path d="M12 2l2.2 6.8L21 11l-6.8 2.2L12 20l-2.2-6.8L3 11l6.8-2.2L12 2z" fill="url(#starGrad)"/><defs><linearGradient id="starGrad" x1="0" y1="0" x2="24" y2="24"><stop stop-color="#f0c75e"/><stop offset="1" stop-color="#f1a8c9"/></linearGradient></defs></svg>
+    </span>
+    Teachers' Day
+  </div>
+  <button class="music-toggle" id="musicToggle" aria-pressed="false">
+    <span class="dot"></span>
+    <span class="music-bars"><span></span><span></span><span></span></span>
+    <span id="musicLabel">Music off</span>
+  </button>
+</nav>
+
+<!-- ============= MAIN VIEW ============= -->
+<main id="mainView">
+
+  <section class="hero" id="hero">
+    <div class="hero-glow"></div>
+    <div class="float-layer" id="floatLayer"></div>
+    <p class="eyebrow">A Small Tribute, From All Of Us</p>
+    <h1>Happy <em>Teachers'</em> Day</h1>
+    <p class="sub">Celebrating the guiding lights of our school</p>
+    <a href="#gallery" class="hero-cta" id="meetBtn">
+      Meet Our Teachers
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
+    </a>
+    <div class="scroll-hint"><span>Scroll</span><span class="line"></span></div>
+  </section>
+
+  <section class="gallery" id="gallery">
+    <div class="section-inner">
+      <div class="section-head reveal">
+        <p class="section-eyebrow">Our Educators</p>
+        <h2 class="section-title">The people who <span>shaped</span> us</h2>
+        <p class="section-desc">Every lesson, every kind word, every second chance &mdash; it all adds up. Here's to the teachers who gave us more than we ever asked for.</p>
+      </div>
+      <div class="teacher-grid" id="teacherGrid"></div>
+    </div>
+  </section>
+
+  <section class="thankyou">
+    <div class="thankyou-glow"></div>
+    <div class="section-inner reveal">
+      <h2>Thank you, teachers,<br>for inspiring us every day.</h2>
+      <p>With gratitude, from every student whose story you helped write.</p>
+    </div>
+  </section>
+
+  <footer>Made with gratitude for Teachers' Day &middot; Replace names, photos and stories freely</footer>
+</main>
+
+<!-- ============= PROFILE VIEW ============= -->
+<div class="profile-view" id="profileView">
+  <button class="back-btn" id="backBtn">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+    Back to Teachers
+  </button>
+  <div class="profile-inner" id="profileInner"></div>
+</div>
+
+<script>
+(function(){
+  'use strict';
+
+  /* ---------------- Data ---------------- */
+  const teachers = [
+    { name:"Anjali Mehra", role:"Head of Mathematics", seed:"Anjali-Mehra-1",
+      quote:"Numbers reveal the poetry hidden in the universe.",
+      bio:"Ms. Mehra has spent fourteen years turning equations into adventures. She has a gift for making the most nervous student believe that math is simply a puzzle waiting to be enjoyed. Her patience after the final bell, when a concept just wouldn't click, is the reason so many of us stopped fearing the subject and started loving it." },
+    { name:"Rohan Verma", role:"Physics Teacher", seed:"Rohan-Verma-2",
+      quote:"Curiosity is the only compass you'll ever need.",
+      bio:"Mr. Verma turns every classroom into a small laboratory of wonder. Whether it's a falling ball or a spinning top, he finds the question inside the ordinary and hands it back to us, glowing. His door is always open for the student who just wants to ask 'but why?' one more time." },
+    { name:"Meera Iyer", role:"English Literature", seed:"Meera-Iyer-3",
+      quote:"Every story you read writes a piece of who you'll become.",
+      bio:"Ms. Iyer taught us that reading is an act of empathy. Her margin notes on our essays felt like letters from someone who truly saw us. She built a classroom where quiet students found their voice and loud ones learned to listen &mdash; a rare and quiet kind of magic." },
+    { name:"David Fernandes", role:"Physical Education", seed:"David-Fernandes-4",
+      quote:"Discipline today becomes the strength you lean on tomorrow.",
+      bio:"Coach Fernandes believes every student is an athlete in training for life. He is the loudest voice on the field and the gentlest one on the sidelines when someone falls. Under his watch, we learned that losing well is its own kind of winning." },
+    { name:"Priya Nair", role:"Art & Design", seed:"Priya-Nair-5",
+      quote:"Creativity is intelligence having fun.",
+      bio:"Ms. Nair's art room is the one place where mistakes are celebrated as happy accidents. She taught us to see colour, shape, and light differently &mdash; and, more importantly, to trust our own strange, wonderful ideas." },
+    { name:"Arjun Kapoor", role:"Computer Science", seed:"Arjun-Kapoor-6",
+      quote:"Every bug you fix teaches you more than the code that worked.",
+      bio:"Mr. Kapoor treats every error message like the start of a good story rather than a dead end. His calm, methodical way of debugging with us &mdash; never for us &mdash; is why so many of his students now build things they once thought were impossible." },
+    { name:"Sunita Rao", role:"Biology Teacher", seed:"Sunita-Rao-7",
+      quote:"Nature is patient with those who observe closely.",
+      bio:"Ms. Rao's field trips turned the school garden into the most exciting classroom we had. She has an endless well of patience for questions about ecosystems, cells, and everything in between, and somehow makes every student feel like a scientist in training." },
+    { name:"Karan Singh", role:"Music Teacher", seed:"Karan-Singh-8",
+      quote:"Music is the language the heart speaks fluently.",
+      bio:"Mr. Singh can coax a tune out of the most reluctant singer in the room. Rehearsals with him feel less like practice and more like discovering something true about yourself. The school choir owes its confidence entirely to his belief in every single voice." }
+  ];
+
+  const avatar = seed => `https://api.dicebear.com/7.x/notionists/svg?seed=${encodeURIComponent(seed)}&backgroundColor=b6e3f4,c0aede,ffd5dc,ffdfbf&radius=50`;
+
+  /* ---------------- Starfield ---------------- */
+  const starfield = document.getElementById('starfield');
+  const starCount = window.innerWidth < 640 ? 40 : 80;
+  for(let i=0;i<starCount;i++){
+    const s = document.createElement('div');
+    s.className='star';
+    s.style.left = Math.random()*100+'%';
+    s.style.top = Math.random()*100+'%';
+    s.style.animationDelay = (Math.random()*4)+'s';
+    s.style.animationDuration = (3+Math.random()*4)+'s';
+    starfield.appendChild(s);
+  }
+
+  /* ---------------- Floating hero 3D objects ---------------- */
+  const floatLayer = document.getElementById('floatLayer');
+  const icons = {
+    book: `<svg width="46" height="46" viewBox="0 0 24 24"><path d="M4 4.5C4 3.7 4.7 3 5.5 3H12v16H5.5c-.8 0-1.5.7-1.5 1.5V4.5z" fill="#f1a8c9" opacity="0.92"/><path d="M20 4.5c0-.8-.7-1.5-1.5-1.5H12v16h6.5c.8 0 1.5.7 1.5 1.5V4.5z" fill="#f0c75e" opacity="0.92"/></svg>`,
+    pencil: `<svg width="40" height="40" viewBox="0 0 24 24"><path d="M3 21l1.5-5.5L15 5l4 4L8.5 19.5 3 21z" fill="#f7dd97"/><path d="M15 5l4 4 2-2-4-4-2 2z" fill="#5a6bd6"/></svg>`,
+    cap: `<svg width="52" height="52" viewBox="0 0 24 24"><path d="M12 3L2 8l10 5 8-4v5h1.5V8L12 3z" fill="#f0c75e"/><path d="M6 11.5V16c0 1.7 2.7 3 6 3s6-1.3 6-3v-4.5l-6 3-6-3z" fill="#f1a8c9"/></svg>`,
+    star: `<svg width="30" height="30" viewBox="0 0 24 24"><path d="M12 2l2.4 7.2H22l-6 4.6 2.3 7.2L12 16.5l-6.3 4.5 2.3-7.2-6-4.6h7.6L12 2z" fill="#f7dd97"/></svg>`,
+    flower: `<svg width="38" height="38" viewBox="0 0 24 24"><g fill="#f1a8c9"><ellipse cx="12" cy="6" rx="3.4" ry="4.2"/><ellipse cx="12" cy="18" rx="3.4" ry="4.2"/><ellipse cx="6" cy="12" rx="4.2" ry="3.4"/><ellipse cx="18" cy="12" rx="4.2" ry="3.4"/></g><circle cx="12" cy="12" r="3" fill="#f0c75e"/></svg>`,
+    plane: `<svg width="42" height="42" viewBox="0 0 24 24"><path d="M21 3L2 10.5l7 2.5 2 7L21 3z" fill="#fbf7f0" opacity="0.95"/><path d="M11 13l3 3 2-6-5 3z" fill="#5a6bd6"/></svg>`
+  };
+  const positions = [
+    {t:'8%', l:'6%', s:1, rot:-12},
+    {t:'18%', l:'88%', s:0.9, rot:14},
+    {t:'62%', l:'4%', s:0.85, rot:8},
+    {t:'70%', l:'90%', s:1, rot:-10},
+    {t:'12%', l:'46%', s:0.7, rot:20},
+    {t:'80%', l:'50%', s:0.65, rot:-16},
+    {t:'40%', l:'92%', s:0.6, rot:10},
+    {t:'46%', l:'3%', s:0.7, rot:-8},
+    {t:'26%', l:'20%', s:0.55, rot:16},
+    {t:'85%', l:'22%', s:0.6, rot:-14},
+    {t:'6%', l:'70%', s:0.6, rot:12},
+    {t:'55%', l:'78%', s:0.5, rot:-18}
+  ];
+  const iconKeys = ['book','pencil','cap','star','flower','plane','star','book','flower','pencil','star','cap'];
+  positions.forEach((p,i)=>{
+    const el = document.createElement('div');
+    el.className='floatie';
+    el.style.top=p.t; el.style.left=p.l;
+    el.style.setProperty('--rot', p.rot+'deg');
+    el.style.transform = `scale(${p.s})`;
+    el.style.animationDuration = (5.5 + Math.random()*3)+'s';
+    el.style.animationDelay = (Math.random()*3)+'s';
+    el.innerHTML = icons[iconKeys[i % iconKeys.length]];
+    el.dataset.depth = (0.15 + Math.random()*0.5).toFixed(2);
+    floatLayer.appendChild(el);
+  });
+
+  /* Parallax on mousemove (desktop) + scroll parallax */
+  const hero = document.getElementById('hero');
+  const isTouch = matchMedia('(hover:none)').matches;
+  const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if(!isTouch && !reduceMotion){
+    hero.addEventListener('mousemove', e=>{
+      const rect = hero.getBoundingClientRect();
+      const mx = (e.clientX - rect.left)/rect.width - 0.5;
+      const my = (e.clientY - rect.top)/rect.height - 0.5;
+      document.querySelectorAll('.floatie').forEach(el=>{
+        const depth = parseFloat(el.dataset.depth);
+        el.style.marginLeft = (mx*40*depth)+'px';
+        el.style.marginTop = (my*30*depth)+'px';
+      });
+      document.querySelector('.hero-glow').style.transform =
+        `translate(calc(-50% + ${mx*30}px), calc(-50% + ${my*20}px))`;
+    });
+  }
+
+  window.addEventListener('scroll', ()=>{
+    if(reduceMotion) return;
+    const y = window.scrollY;
+    if(y < window.innerHeight*1.2){
+      floatLayer.style.transform = `translateY(${y*0.18}px)`;
+    }
+  }, {passive:true});
+
+  /* ---------------- Cursor gold dust trail ---------------- */
+  if(!isTouch && !reduceMotion){
+    let last = 0;
+    window.addEventListener('mousemove', e=>{
+      const now = Date.now();
+      if(now-last < 45) return;
+      last = now;
+      const d = document.createElement('div');
+      d.className='dust';
+      d.style.left = e.clientX+'px';
+      d.style.top = e.clientY+'px';
+      document.body.appendChild(d);
+      setTimeout(()=>d.remove(), 900);
+    });
+  }
+
+  /* ---------------- "Meet Our Teachers" portal transition ---------------- */
+  const meetBtn = document.getElementById('meetBtn');
+  const portal = document.getElementById('portal');
+  const galleryHead = document.querySelector('#gallery .section-head');
+
+  function spawnBurst(x, y){
+    if(reduceMotion) return;
+    const n = isTouch ? 10 : 16;
+    for(let i=0;i<n;i++){
+      const p = document.createElement('div');
+      p.className='burst-particle';
+      const size = 5 + Math.random()*8;
+      const angle = (Math.PI*2/n)*i + Math.random()*0.4;
+      const dist = 70 + Math.random()*90;
+      p.style.width = size+'px';
+      p.style.height = size+'px';
+      p.style.left = x+'px';
+      p.style.top = y+'px';
+      p.style.setProperty('--bx', (Math.cos(angle)*dist)+'px');
+      p.style.setProperty('--by', (Math.sin(angle)*dist)+'px');
+      p.style.setProperty('--dur', (550+Math.random()*350)+'ms');
+      document.body.appendChild(p);
+      setTimeout(()=>p.remove(), 950);
+    }
+  }
+
+  meetBtn.addEventListener('click', function(e){
+    e.preventDefault();
+    if(!galleryHead) return;
+
+    const btnRect = meetBtn.getBoundingClientRect();
+    const ox = btnRect.left + btnRect.width/2;
+    const oy = btnRect.top + btnRect.height/2;
+    spawnBurst(ox, oy);
+
+    if(reduceMotion){
+      galleryHead.scrollIntoView({behavior:'auto', block:'start'});
+      return;
+    }
+
+    portal.style.setProperty('--ox', ox+'px');
+    portal.style.setProperty('--oy', oy+'px');
+    portal.classList.remove('contract');
+    portal.classList.add('show');
+    requestAnimationFrame(()=>portal.classList.add('expand'));
+
+    setTimeout(()=>{
+      const navOffset = 84;
+      const targetY = galleryHead.getBoundingClientRect().top + window.scrollY - navOffset;
+      window.scrollTo({top: targetY, behavior:'auto'});
+
+      const cRect = galleryHead.getBoundingClientRect();
+      portal.style.setProperty('--cx', (cRect.left + cRect.width/2)+'px');
+      portal.style.setProperty('--cy', (cRect.top + cRect.height/2)+'px');
+
+      requestAnimationFrame(()=>{
+        portal.classList.remove('expand');
+        portal.classList.add('contract');
+      });
+
+      setTimeout(()=>{
+        portal.classList.remove('show','contract');
+      }, 800);
+    }, 620);
+  });
+
+  /* ---------------- Scroll reveal ---------------- */
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(en=>{
+      if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); }
+    });
+  }, {threshold:0.15});
+  revealEls.forEach(el=>io.observe(el));
+
+  /* ---------------- Teacher gallery ---------------- */
+  const grid = document.getElementById('teacherGrid');
+  const arrowSvg = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>`;
+
+  teachers.forEach((t, idx)=>{
+    const card = document.createElement('div');
+    card.className='tcard reveal';
+    card.style.transitionDelay = (idx%4 * 0.08)+'s';
+    card.innerHTML = `
+      <div class="tcard-inner">
+        <div class="tcard-sheen"></div>
+        <div class="tcard-photo"><img src="${avatar(t.seed)}" alt="Portrait of ${t.name}" loading="lazy"></div>
+        <div class="tcard-name">${t.name}</div>
+        <div class="tcard-role">${t.role}</div>
+        <div class="tcard-quote">&ldquo;${t.quote}&rdquo;</div>
+        <button class="tcard-btn" data-idx="${idx}">Know More ${arrowSvg}</button>
+      </div>`;
+    grid.appendChild(card);
+    io.observe(card);
+
+    // 3D tilt on mousemove (desktop only)
+    if(!isTouch && !reduceMotion){
+      card.addEventListener('mousemove', e=>{
+        const r = card.getBoundingClientRect();
+        const px = (e.clientX - r.left)/r.width;
+        const py = (e.clientY - r.top)/r.height;
+        const rx = (py - 0.5) * -14;
+        const ry = (px - 0.5) * 14;
+        card.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-8px)`;
+        card.querySelector('.tcard-sheen').style.setProperty('--mx', (px*100)+'%');
+        card.querySelector('.tcard-sheen').style.setProperty('--my', (py*100)+'%');
+      });
+      card.addEventListener('mouseleave', ()=>{
+        card.style.transform = 'perspective(900px) rotateX(0) rotateY(0) translateY(0)';
+      });
+    }
+
+    // Touch devices: first tap reveals the quote, tapping again (or the button) opens the profile
+    if(isTouch){
+      card.addEventListener('click', (e)=>{
+        if(e.target.closest('.tcard-btn')) return;
+        const already = card.classList.contains('touched');
+        document.querySelectorAll('.tcard.touched').forEach(c=>{ if(c!==card) c.classList.remove('touched'); });
+        card.classList.toggle('touched', !already);
+      });
+    }
+
+    card.querySelector('.tcard-btn').addEventListener('click', (e)=>{
+      e.stopPropagation();
+      openProfile(idx);
+    });
+  });
+
+  /* ---------------- Profile view ---------------- */
+  const profileView = document.getElementById('profileView');
+  const profileInner = document.getElementById('profileInner');
+  const backBtn = document.getElementById('backBtn');
+  let currentIdx = 0;
+  let scrollY = 0;
+
+  const decoIcons = [icons.star, icons.flower, icons.book, icons.star, icons.flower];
+  function decoHTML(){
+    const spots = [
+      {t:'-4%', l:'-6%'}, {t:'6%', l:'92%'}, {t:'80%', l:'-8%'},
+      {t:'88%', l:'86%'}, {t:'40%', l:'98%'}
+    ];
+    return spots.map((s,i)=>`<span class="deco-item" style="top:${s.t};left:${s.l};animation-delay:${i*0.6}s;transform:scale(${0.7+ (i%3)*0.15})">${decoIcons[i%decoIcons.length]}</span>`).join('');
+  }
+
+  function renderProfile(idx){
+    const t = teachers[idx];
+    profileInner.innerHTML = `
+      <p class="profile-eyebrow">Teacher Spotlight</p>
+      <div class="profile-photo-wrap">
+        <div class="profile-photo-glow"></div>
+        <div class="profile-deco">${decoHTML()}</div>
+        <div class="profile-photo"><img src="${avatar(t.seed)}" alt="Portrait of ${t.name}"></div>
+      </div>
+      <h1 class="profile-name">${t.name}</h1>
+      <p class="profile-role">${t.role}</p>
+      <p class="profile-quote">&ldquo;${t.quote}&rdquo;</p>
+      <p class="profile-para">${t.bio}</p>
+      <div class="profile-nav">
+        <button class="nav-btn prev" id="prevBtn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+          Previous
+        </button>
+        <button class="nav-btn gallery-btn" id="allBtn">All Teachers</button>
+        <button class="nav-btn next" id="nextBtn">
+          Next
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+      </div>`;
+
+    document.getElementById('prevBtn').addEventListener('click', ()=>switchProfile(-1));
+    document.getElementById('nextBtn').addEventListener('click', ()=>switchProfile(1));
+    document.getElementById('allBtn').addEventListener('click', closeProfile);
+  }
+
+  function switchProfile(dir){
+    currentIdx = (currentIdx + dir + teachers.length) % teachers.length;
+    profileInner.style.opacity = 0;
+    profileInner.style.transform = 'translateY(16px)';
+    setTimeout(()=>{
+      renderProfile(currentIdx);
+      profileInner.style.transition='opacity .4s ease, transform .4s ease';
+      profileInner.style.opacity = 1;
+      profileInner.style.transform='translateY(0)';
+      profileView.scrollTo({top:0, behavior:'instant' in document.documentElement.style ? 'instant':'auto'});
+    }, 220);
+  }
+
+  function openProfile(idx){
+    currentIdx = idx;
+    scrollY = window.scrollY;
+    renderProfile(idx);
+    profileView.classList.add('active');
+    document.body.style.overflow='hidden';
+    document.querySelector('.topnav').classList.add('hidden');
+    requestAnimationFrame(()=>{
+      profileView.classList.add('show');
+    });
+  }
+
+  function closeProfile(){
+    profileView.classList.remove('show');
+    document.querySelector('.topnav').classList.remove('hidden');
+    setTimeout(()=>{
+      profileView.classList.remove('active');
+      document.body.style.overflow='';
+      window.scrollTo(0, scrollY);
+    }, 400);
+  }
+
+  backBtn.addEventListener('click', closeProfile);
+  document.addEventListener('keydown', e=>{
+    if(!profileView.classList.contains('active')) return;
+    if(e.key==='Escape') closeProfile();
+    if(e.key==='ArrowRight') switchProfile(1);
+    if(e.key==='ArrowLeft') switchProfile(-1);
+  });
+
+  /* ---------------- Ambient music toggle (Web Audio, no external file) ---------------- */
+  const musicToggle = document.getElementById('musicToggle');
+  const musicLabel = document.getElementById('musicLabel');
+  let audioCtx=null, playing=false, nodes=[];
+
+  function startAmbient(){
+    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    const master = audioCtx.createGain();
+    master.gain.value = 0.0001;
+    master.connect(audioCtx.destination);
+    master.gain.exponentialRampToValueAtTime(0.06, audioCtx.currentTime + 1.5);
+
+    const freqs = [196.00, 246.94, 329.63, 392.00]; // gentle G major pad
+    freqs.forEach((f, i)=>{
+      const osc = audioCtx.createOscillator();
+      osc.type = 'sine';
+      osc.frequency.value = f;
+      const g = audioCtx.createGain();
+      g.gain.value = 0.22 - i*0.03;
+      const lfo = audioCtx.createOscillator();
+      lfo.frequency.value = 0.08 + i*0.02;
+      const lfoGain = audioCtx.createGain();
+      lfoGain.gain.value = 3;
+      lfo.connect(lfoGain);
+      lfoGain.connect(osc.frequency);
+      osc.connect(g);
+      g.connect(master);
+      osc.start(); lfo.start();
+      nodes.push(osc, lfo);
+    });
+    nodes.push(master);
+    playing = true;
+  }
+
+  function stopAmbient(){
+    if(!audioCtx) return;
+    const master = nodes[nodes.length-1];
+    master.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.8);
+    setTimeout(()=>{
+      nodes.forEach(n=>{ if(n.stop) try{n.stop();}catch(e){} });
+      audioCtx.close();
+      audioCtx=null; nodes=[];
+    }, 900);
+    playing = false;
+  }
+
+  musicToggle.addEventListener('click', ()=>{
+    if(!playing){
+      startAmbient();
+      musicToggle.classList.add('on');
+      musicToggle.setAttribute('aria-pressed','true');
+      musicLabel.textContent='Music on';
+    }else{
+      stopAmbient();
+      musicToggle.classList.remove('on');
+      musicToggle.setAttribute('aria-pressed','false');
+      musicLabel.textContent='Music off';
+    }
+  });
+
+})();
+</script>
+</body>
+</html>
