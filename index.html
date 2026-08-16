@@ -1,3 +1,36 @@
+<!--
+  ============================================================
+  HAPPY TEACHERS' DAY — WEBSITE
+  ============================================================
+  This whole website (design + code) lives in ONE file, split
+  into 3 parts, in this order:
+
+    1. <style>  ...</style>   → all the visual design (colors, fonts, layout, animations)
+    2. <body>   ...           → the actual page content (hero text, sections)
+    3. <script> ...</script>  → the interactive behavior (teacher cards, profile pages, music, transitions)
+
+  THE 3 THINGS YOU'LL MOST LIKELY WANT TO CHANGE:
+
+    A) Teacher names / subjects / quotes / stories / photos
+       → Search for:  const teachers = [
+         It's inside the <script> section near the bottom.
+         Each teacher is one { ... } block — copy/paste a block to add a teacher,
+         delete a block to remove one.
+
+    B) Colors (purple / gold / pink / blue / white theme)
+       → Search for:  :root{
+         It's the very first thing inside <style> below.
+         Change the hex codes (like #f0c75e) and the whole site updates everywhere.
+
+    C) Hero title / subtitle text
+       → Search for:  <section class="hero"
+         It's near the top of the <body> section.
+
+  Everything else (animations, hover effects, the teacher profile
+  pop-up, the music toggle) will keep working automatically —
+  you don't need to touch the code below to just change content.
+  ============================================================
+-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,24 +40,39 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
+  /* ============================================================
+     COLOR & FONT PALETTE
+     Change any hex color below and it updates the whole site,
+     since every style further down just says "use --gold" etc.
+     instead of repeating the color every time.
+     ============================================================ */
   :root{
-    --purple-deep:#1c1032;
-    --purple:#2c1a52;
-    --purple-mid:#3a2170;
-    --blue-royal:#2f3a8f;
-    --blue-glow:#5a6bd6;
-    --gold:#f0c75e;
-    --gold-soft:#f7dd97;
-    --pink:#f1a8c9;
-    --pink-soft:#f8cfe1;
-    --white:#fbf7f0;
-    --ink:#1a1230;
+    /* --- background colors (deep, night-sky purples) --- */
+    --purple-deep:#1c1032;     /* darkest background color */
+    --purple:#2c1a52;          /* medium background purple */
+    --purple-mid:#3a2170;      /* lighter background purple, used in glows/cards */
+    --blue-royal:#2f3a8f;      /* royal blue accent, used in background glow */
+    --blue-glow:#5a6bd6;       /* brighter blue, used in small accents */
+
+    /* --- warm accent colors (the "celebration" colors) --- */
+    --gold:#f0c75e;            /* main gold accent — buttons, stars, glow */
+    --gold-soft:#f7dd97;       /* lighter gold — headings, text highlights */
+    --pink:#f1a8c9;            /* main pink accent */
+    --pink-soft:#f8cfe1;       /* lighter pink — headings, text highlights */
+
+    /* --- neutral colors --- */
+    --white:#fbf7f0;           /* warm off-white, used for main text */
+    --ink:#1a1230;             /* dark text color, used on light gold buttons */
+
+    /* --- glass card effect (the see-through teacher cards) --- */
     --glass:rgba(251,247,240,0.08);
     --glass-border:rgba(247,221,151,0.28);
     --shadow-gold:0 0 40px rgba(240,199,94,0.25);
-    --font-display:'Fraunces', serif;
-    --font-body:'Plus Jakarta Sans', sans-serif;
-    --font-script:'Caveat', cursive;
+
+    /* --- fonts (loaded from Google Fonts above) --- */
+    --font-display:'Fraunces', serif;       /* big elegant headings */
+    --font-body:'Plus Jakarta Sans', sans-serif;  /* everyday readable text */
+    --font-script:'Caveat', cursive;        /* handwritten-style quotes */
   }
 
   *{margin:0;padding:0;box-sizing:border-box;}
@@ -572,9 +620,11 @@
 <!-- ============= MAIN VIEW ============= -->
 <main id="mainView">
 
+  <!-- HERO SECTION — the big welcome banner at the top of the page.
+       "eyebrow" = small text above the title. "sub" = subtitle below the title. -->
   <section class="hero" id="hero">
     <div class="hero-glow"></div>
-    <div class="float-layer" id="floatLayer"></div>
+    <div class="float-layer" id="floatLayer"></div><!-- floating books/stars/etc get added here by JS -->
     <p class="eyebrow">A Small Tribute, From All Of Us</p>
     <h1>Happy <em>Teachers'</em> Day</h1>
     <p class="sub">Celebrating the guiding lights of our school</p>
@@ -596,6 +646,7 @@
     </div>
   </section>
 
+  <!-- CLOSING THANK-YOU MESSAGE at the bottom of the page -->
   <section class="thankyou">
     <div class="thankyou-glow"></div>
     <div class="section-inner reveal">
@@ -604,7 +655,6 @@
     </div>
   </section>
 
-  <footer>Made with gratitude for Teachers' Day &middot; Replace names, photos and stories freely</footer>
 </main>
 
 <!-- ============= PROFILE VIEW ============= -->
@@ -620,7 +670,28 @@
 (function(){
   'use strict';
 
-  /* ---------------- Data ---------------- */
+  /* ================================================================
+     TEACHER DATA — this is the list that fills the whole website:
+     the gallery cards AND the teacher profile pages both read from here.
+
+     TO EDIT A TEACHER: just change the text inside the quotes.
+       name  → shown as their full name
+       role  → their subject / job title
+       seed  → any short unique word/id — it controls which placeholder
+               avatar picture they get (change it and the picture changes)
+       quote → short quote shown on hover/tap and on their profile page
+       bio   → the longer paragraph shown on their profile page
+
+     TO ADD A TEACHER: copy one whole { ... } block below, paste it
+       as a new line, and edit its text. Don't forget the comma
+       between blocks.
+
+     TO REMOVE A TEACHER: delete their whole { ... } block
+       (and its trailing comma if it's now the last one).
+
+     TO USE REAL PHOTOS instead of the placeholder avatars: see the
+     "avatar" line just below this list for instructions.
+     ================================================================ */
   const teachers = [
     { name:"Anjali Mehra", role:"Head of Mathematics", seed:"Anjali-Mehra-1",
       quote:"Numbers reveal the poetry hidden in the universe.",
@@ -648,6 +719,11 @@
       bio:"Mr. Singh can coax a tune out of the most reluctant singer in the room. Rehearsals with him feel less like practice and more like discovering something true about yourself. The school choir owes its confidence entirely to his belief in every single voice." }
   ];
 
+  // Turns a teacher's "seed" into a placeholder cartoon-avatar picture URL.
+  // TO USE A REAL PHOTO for a teacher instead: go up to that teacher's
+  // block above, and change their "seed" value to the real image's
+  // path/URL, e.g. seed:"images/anjali.jpg" — then replace this whole
+  // line with simply:   const avatar = seed => seed;
   const avatar = seed => `https://api.dicebear.com/7.x/notionists/svg?seed=${encodeURIComponent(seed)}&backgroundColor=b6e3f4,c0aede,ffd5dc,ffdfbf&radius=50`;
 
   /* ---------------- Starfield ---------------- */
