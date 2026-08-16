@@ -154,6 +154,48 @@
     display:grid;place-items:center;
     filter:drop-shadow(0 0 8px rgba(240,199,94,.7));
   }
+
+  /* Groups the search bar + music toggle together on the right side of the nav */
+  .nav-right{display:flex;align-items:center;gap:12px;}
+
+  /* ===== Search bar (filters teacher cards by name) ===== */
+  .nav-search{
+    display:flex;align-items:center;
+    border:1px solid var(--glass-border);
+    border-radius:999px;
+    background:var(--glass);
+    transition:box-shadow .3s ease, border-color .3s ease, background .3s ease;
+  }
+  .nav-search:focus-within{
+    border-color:rgba(240,199,94,0.6);
+    box-shadow:var(--shadow-gold);
+    background:rgba(251,247,240,0.12);
+  }
+  .search-icon-btn{
+    display:flex;align-items:center;justify-content:center;
+    width:38px;height:38px;flex-shrink:0;
+    color:var(--gold-soft);
+  }
+  .search-icon-btn svg{width:17px;height:17px;}
+  .nav-search input{
+    width:150px;
+    background:none;border:none;outline:none;
+    color:var(--white);
+    font-family:var(--font-body);
+    font-size:.86rem;font-weight:500;
+    padding:9px 4px 9px 0;
+    transition:width .3s ease;
+  }
+  .nav-search input::placeholder{color:#b9adda;}
+  .search-clear-btn{
+    display:flex;align-items:center;justify-content:center;
+    width:30px;height:30px;margin-right:4px;flex-shrink:0;
+    color:#c9bfe6;border-radius:50%;
+    transition:background .2s ease, color .2s ease;
+  }
+  .search-clear-btn:hover{background:rgba(240,199,94,0.18);color:var(--gold-soft);}
+  .search-clear-btn svg{width:12px;height:12px;}
+
   .music-toggle{
     display:flex;align-items:center;gap:10px;
     padding:9px 16px;
@@ -184,6 +226,28 @@
   .music-bars span:nth-child(2){animation-delay:.15s;}
   .music-bars span:nth-child(3){animation-delay:.3s;}
   @keyframes bar{0%,100%{height:3px;}50%{height:10px;}}
+
+  /* No search results message inside the gallery */
+  .no-results{
+    display:none;
+    text-align:center;
+    padding:50px 20px;
+    color:#cfc6e6;
+    font-size:1.05rem;
+    grid-column:1/-1;
+  }
+  .no-results.show{display:block;}
+  .no-results strong{color:var(--gold-soft);}
+
+  /* Cards hidden by the search filter */
+  .tcard.filtered-out{display:none;}
+
+  /* ---- Mobile: search bar collapses to just an icon until tapped ---- */
+  @media (max-width:640px){
+    .nav-search input{width:0;padding-left:0;padding-right:0;opacity:0;}
+    .nav-search.expanded input{width:38vw;opacity:1;padding:9px 4px 9px 0;}
+    .nav-search:not(.expanded) .search-clear-btn{display:none !important;}
+  }
 
   /* ===== Hero ===== */
   .hero{
@@ -603,6 +667,7 @@
   </span>
 </div>
 
+<!-- TOP NAV BAR: logo on the left, search + music toggle on the right -->
 <nav class="topnav">
   <div class="brand">
     <span class="brand-mark">
@@ -610,11 +675,27 @@
     </span>
     Teachers' Day
   </div>
-  <button class="music-toggle" id="musicToggle" aria-pressed="false">
-    <span class="dot"></span>
-    <span class="music-bars"><span></span><span></span><span></span></span>
-    <span id="musicLabel">Music off</span>
-  </button>
+
+  <div class="nav-right">
+    <!-- SEARCH BAR: filters the teacher cards below as you type.
+         On small screens it starts collapsed to a magnifier icon
+         and expands when tapped (see .nav-search.expanded in CSS). -->
+    <div class="nav-search" id="navSearch">
+      <button class="search-icon-btn" id="searchIconBtn" aria-label="Search teachers">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      </button>
+      <input type="text" id="teacherSearch" placeholder="Search teachers..." autocomplete="off" aria-label="Search teachers by name">
+      <button class="search-clear-btn" id="searchClearBtn" aria-label="Clear search" hidden>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+
+    <button class="music-toggle" id="musicToggle" aria-pressed="false">
+      <span class="dot"></span>
+      <span class="music-bars"><span></span><span></span><span></span></span>
+      <span id="musicLabel">Music off</span>
+    </button>
+  </div>
 </nav>
 
 <!-- ============= MAIN VIEW ============= -->
@@ -643,6 +724,7 @@
         <p class="section-desc">Every lesson, every kind word, every second chance &mdash; it all adds up. Here's to the teachers who gave us more than we ever asked for.</p>
       </div>
       <div class="teacher-grid" id="teacherGrid"></div>
+      <p class="no-results" id="noResults">No teachers match <strong id="noResultsTerm"></strong>. Try a different name.</p>
     </div>
   </section>
 
@@ -904,6 +986,8 @@
     const card = document.createElement('div');
     card.className='tcard reveal';
     card.style.transitionDelay = (idx%4 * 0.08)+'s';
+    // store a lowercase, searchable copy of the name/role for the search bar
+    card.dataset.search = (t.name + ' ' + t.role).toLowerCase();
     card.innerHTML = `
       <div class="tcard-inner">
         <div class="tcard-sheen"></div>
@@ -947,6 +1031,69 @@
       e.stopPropagation();
       openProfile(idx);
     });
+  });
+
+  /* ---------------- Search bar (filters the gallery by name/subject) ---------------- */
+  const navSearch = document.getElementById('navSearch');
+  const searchInput = document.getElementById('teacherSearch');
+  const searchIconBtn = document.getElementById('searchIconBtn');
+  const searchClearBtn = document.getElementById('searchClearBtn');
+  const noResults = document.getElementById('noResults');
+  const noResultsTerm = document.getElementById('noResultsTerm');
+  const allCards = () => document.querySelectorAll('.tcard');
+
+  function runFilter(){
+    const term = searchInput.value.trim().toLowerCase();
+    searchClearBtn.hidden = term.length === 0;
+    let visibleCount = 0;
+
+    allCards().forEach(card=>{
+      const matches = term === '' || card.dataset.search.includes(term);
+      card.classList.toggle('filtered-out', !matches);
+      if(matches) visibleCount++;
+    });
+
+    if(term !== '' && visibleCount === 0){
+      noResultsTerm.textContent = `"${searchInput.value.trim()}"`;
+      noResults.classList.add('show');
+    }else{
+      noResults.classList.remove('show');
+    }
+  }
+
+  searchInput.addEventListener('input', runFilter);
+
+  searchClearBtn.addEventListener('click', ()=>{
+    searchInput.value = '';
+    runFilter();
+    searchInput.focus();
+  });
+
+  // On phones the search starts collapsed to just a magnifier icon;
+  // tapping it expands the input and focuses it.
+  searchIconBtn.addEventListener('click', ()=>{
+    if(!isTouch && window.innerWidth > 640){
+      searchInput.focus();
+      return;
+    }
+    const wasExpanded = navSearch.classList.contains('expanded');
+    if(wasExpanded && searchInput.value.trim() === ''){
+      navSearch.classList.remove('expanded');
+    }else{
+      navSearch.classList.add('expanded');
+      searchInput.focus();
+    }
+  });
+
+  // Typing should scroll the gallery into view so results are visible
+  let hasAutoScrolled = false;
+  searchInput.addEventListener('input', ()=>{
+    if(hasAutoScrolled || searchInput.value.trim()==='') return;
+    const galleryTop = document.getElementById('gallery').getBoundingClientRect().top;
+    if(galleryTop > window.innerHeight * 0.5){
+      document.getElementById('gallery').scrollIntoView({behavior:'smooth', block:'start'});
+    }
+    hasAutoScrolled = true;
   });
 
   /* ---------------- Profile view ---------------- */
