@@ -7,7 +7,7 @@
 
     1. <style>  ...</style>   → all the visual design (colors, fonts, layout, animations)
     2. <body>   ...           → the actual page content (hero text, sections)
-    3. <script> ...</script>  → the interactive behavior (teacher cards, profile pages, music, transitions)
+    3. <script> ...</script>  → the interactive behavior (teacher cards, profile pages, transitions)
 
   THE 3 THINGS YOU'LL MOST LIKELY WANT TO CHANGE:
 
@@ -27,7 +27,7 @@
          It's near the top of the <body> section.
 
   Everything else (animations, hover effects, the teacher profile
-  pop-up, the music toggle) will keep working automatically —
+  pop-up) will keep working automatically —
   you don't need to touch the code below to just change content.
   ============================================================
 -->
@@ -155,7 +155,7 @@
     filter:drop-shadow(0 0 8px rgba(240,199,94,.7));
   }
 
-  /* Groups the search bar + music toggle together on the right side of the nav */
+  /* Right side of the nav (currently just the search bar) */
   .nav-right{display:flex;align-items:center;gap:12px;}
 
   /* ===== Search bar (filters teacher cards by name) ===== */
@@ -195,37 +195,6 @@
   }
   .search-clear-btn:hover{background:rgba(240,199,94,0.18);color:var(--gold-soft);}
   .search-clear-btn svg{width:12px;height:12px;}
-
-  .music-toggle{
-    display:flex;align-items:center;gap:10px;
-    padding:9px 16px;
-    border:1px solid var(--glass-border);
-    border-radius:999px;
-    background:var(--glass);
-    font-size:.82rem;
-    font-weight:600;
-    letter-spacing:.02em;
-    transition:box-shadow .3s ease, transform .2s ease, background .3s ease;
-  }
-  .music-toggle:hover{transform:translateY(-2px);box-shadow:var(--shadow-gold);}
-  .music-toggle .dot{
-    width:8px;height:8px;border-radius:50%;
-    background:#8b83a8;
-    transition:all .3s ease;
-  }
-  .music-toggle.on .dot{
-    background:var(--gold);
-    box-shadow:0 0 10px var(--gold);
-    animation:pulseDot 1.2s ease-in-out infinite;
-  }
-  @keyframes pulseDot{0%,100%{transform:scale(1);}50%{transform:scale(1.5);}}
-  .music-bars{display:flex;gap:2px;align-items:flex-end;height:10px;}
-  .music-bars span{width:2.5px;background:var(--gold);border-radius:2px;height:3px;transition:height .2s;}
-  .music-toggle.on .music-bars span{animation:bar 900ms ease-in-out infinite;}
-  .music-bars span:nth-child(1){animation-delay:0s;}
-  .music-bars span:nth-child(2){animation-delay:.15s;}
-  .music-bars span:nth-child(3){animation-delay:.3s;}
-  @keyframes bar{0%,100%{height:3px;}50%{height:10px;}}
 
   /* No search results message inside the gallery */
   .no-results{
@@ -648,8 +617,6 @@
   @media (max-width:420px){
     .topnav{padding-left:16px;padding-right:16px;}
     .brand{font-size:1rem;}
-    .music-toggle{padding:8px 12px;gap:7px;}
-    #musicLabel{display:none;}
     .hero{padding-top:100px;}
   }
 
@@ -667,7 +634,7 @@
   </span>
 </div>
 
-<!-- TOP NAV BAR: logo on the left, search + music toggle on the right -->
+<!-- TOP NAV BAR: logo on the left, search on the right -->
 <nav class="topnav">
   <div class="brand">
     <span class="brand-mark">
@@ -689,12 +656,6 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
       </button>
     </div>
-
-    <button class="music-toggle" id="musicToggle" aria-pressed="false">
-      <span class="dot"></span>
-      <span class="music-bars"><span></span><span></span><span></span></span>
-      <span id="musicLabel">Music off</span>
-    </button>
   </div>
 </nav>
 
@@ -1183,66 +1144,6 @@
     if(e.key==='Escape') closeProfile();
     if(e.key==='ArrowRight') switchProfile(1);
     if(e.key==='ArrowLeft') switchProfile(-1);
-  });
-
-  /* ---------------- Ambient music toggle (Web Audio, no external file) ---------------- */
-  const musicToggle = document.getElementById('musicToggle');
-  const musicLabel = document.getElementById('musicLabel');
-  let audioCtx=null, playing=false, nodes=[];
-
-  function startAmbient(){
-    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-    const master = audioCtx.createGain();
-    master.gain.value = 0.0001;
-    master.connect(audioCtx.destination);
-    master.gain.exponentialRampToValueAtTime(0.06, audioCtx.currentTime + 1.5);
-
-    const freqs = [196.00, 246.94, 329.63, 392.00]; // gentle G major pad
-    freqs.forEach((f, i)=>{
-      const osc = audioCtx.createOscillator();
-      osc.type = 'sine';
-      osc.frequency.value = f;
-      const g = audioCtx.createGain();
-      g.gain.value = 0.22 - i*0.03;
-      const lfo = audioCtx.createOscillator();
-      lfo.frequency.value = 0.08 + i*0.02;
-      const lfoGain = audioCtx.createGain();
-      lfoGain.gain.value = 3;
-      lfo.connect(lfoGain);
-      lfoGain.connect(osc.frequency);
-      osc.connect(g);
-      g.connect(master);
-      osc.start(); lfo.start();
-      nodes.push(osc, lfo);
-    });
-    nodes.push(master);
-    playing = true;
-  }
-
-  function stopAmbient(){
-    if(!audioCtx) return;
-    const master = nodes[nodes.length-1];
-    master.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.8);
-    setTimeout(()=>{
-      nodes.forEach(n=>{ if(n.stop) try{n.stop();}catch(e){} });
-      audioCtx.close();
-      audioCtx=null; nodes=[];
-    }, 900);
-    playing = false;
-  }
-
-  musicToggle.addEventListener('click', ()=>{
-    if(!playing){
-      startAmbient();
-      musicToggle.classList.add('on');
-      musicToggle.setAttribute('aria-pressed','true');
-      musicLabel.textContent='Music on';
-    }else{
-      stopAmbient();
-      musicToggle.classList.remove('on');
-      musicToggle.setAttribute('aria-pressed','false');
-      musicLabel.textContent='Music off';
-    }
   });
 
 })();
