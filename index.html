@@ -736,168 +736,384 @@
      "avatar" line just below this list for instructions.
      ================================================================ */
   const teachers = [
-     { name:'THUSHARA R', role:'Principal', seed:'teacher-1-THUSHARA-R',
-      quote:'Thank you for believing in us and helping us grow.',
-      bio:'Dear Ma’am, thank you for being such a wonderful principal and for guiding our school with dedication and care. Your leadership, discipline, and kindness inspire us to become better students and better people. You always encourage us to do our best and create an environment where we can learn and grow. We are truly grateful for everything you do for us. You will always be one of the most respected people in our school.' },
-    { name:'MOHAMMED ASHIF P', role:'PT Sir', seed:'teacher-2-MOHAMMED-ASHIF-P',
-      quote:'Your guidance makes every lesson worth remembering.',
-      bio:'Dear Sir, thank you for making physical education enjoyable and teaching us the importance of fitness, teamwork, and discipline. Your energetic nature and encouraging words always motivate us to give our best. You have taught us that winning is not everything, but giving our best and never giving up is what truly matters. Thank you for being such an inspiring and supportive teacher.' },
-    { name:'BINDU P', role:'Biology Ma’am', seed:'teacher-3-BINDU-P',
-      quote:'Thank you for making learning brighter every day.',
-      bio:'Dear Ma’am, thank you for making Biology more interesting and helping us understand the beauty of life and nature. Your patience and dedication make even difficult topics easier to learn. You always encourage us to ask questions and understand things rather than simply memorising them. Thank you for being a caring teacher who always wants the best for her students.' },
-    { name:'NAJEEB RAHMAN N', role:'IT', seed:'teacher-4-NAJEEB-RAHMAN-N',
-      quote:'A great teacher leaves a lasting mark on every student.',
-      bio:'Dear Sir, thank you for teaching us about technology and helping us understand the world of computers and IT. Your knowledge and willingness to explain things clearly make learning much easier. You have shown us how useful technology can be when used correctly. We truly appreciate your patience, guidance, and all the effort you put into helping us learn.' },
-    { name:'NISHA BALACHANDRAN', role:'Chemistry', seed:'teacher-5-NISHA-BALACHANDRAN',
-      quote:'Thank you for believing in us and helping us grow.',
-      bio:'Thank you for making Chemistry feel less difficult and much more interesting. Your dedication, patience, and way of explaining concepts have helped us understand things that once seemed confusing. You always encourage us to keep trying. We are thankful for every lesson and for the confidence you have helped us build.' },
-    { name:'RAMYA HAREESH', role:'Physics', seed:'teacher-6-RAMYA-HAREESH',
-      quote:'Your guidance makes every lesson worth remembering.',
-      bio:'Thank you for making Physics more understandable and helping us connect classroom concepts with the real world. Your explanations encourage us to think, question, and discover. Even when a topic feels difficult, your support gives us the confidence to try again. Thank you for being an inspiring and patient teacher.' },
-    { name:'SANDHYA M', role:'Maths', seed:'teacher-7-SANDHYA-M',
-      quote:'Thank you for making learning brighter every day.',
-      bio:'Thank you for helping us face Maths with greater confidence. Your patience when we make mistakes and your encouragement to try again mean so much to us. You have taught us that difficult problems can be solved one step at a time. Thank you for believing in us and always pushing us to do better.' },
-    { name:'K HARIKUMAR', role:'English', seed:'teacher-8-K-HARIKUMAR',
-      quote:'A great teacher leaves a lasting mark on every student.',
-      bio:'Thank you for helping us improve our English and express our thoughts with confidence. Your guidance has taught us that language is not only about grammar and books, but also about communication and imagination. Your patience and encouragement make learning enjoyable. We will always be grateful for the confidence you have given us.' },
-    { name:'THABASSUNNEESA', role:'Elementary', seed:'teacher-9-THABASSUNNEESA',
-      quote:'Thank you for believing in us and helping us grow.',
-      bio:'Thank you for being such a kind, patient, and caring teacher. Your gentle way of guiding students makes everyone feel comfortable and supported. You remind us that learning should be joyful and that every small improvement matters. Thank you for all the care, encouragement, and effort you put into your students.' },
-    { name:'JUMANA FARVIN', role:'Teacher', seed:'teacher-10-JUMANA-FARVIN',
-      quote:'Your guidance makes every lesson worth remembering.',
-      bio:'Thank you for always bringing kindness and positivity into our school days. Your understanding nature makes it easier for students to approach you and share their worries. You encourage us to keep improving while reminding us to believe in ourselves. We are truly thankful for your support and the memories you have given us.' },
-    { name:'MUFEEDA NOUSHAD', role:'Teacher', seed:'teacher-11-MUFEEDA-NOUSHAD',
-      quote:'Thank you for making learning brighter every day.',
-      bio:'Thank you for being a supportive teacher who always wants to see her students succeed. Your calm nature, patience, and encouraging words help us stay confident when things get difficult. You have taught us that effort matters and that giving up is never the answer. We are grateful for your guidance.' },
-    { name:'SAJITHA K P', role:'Teacher', seed:'teacher-12-SAJITHA-K-P',
-      quote:'A great teacher leaves a lasting mark on every student.',
-      bio:'Your dedication to your students is something we truly admire. Thank you for patiently helping us whenever we struggle and for encouraging us to keep moving forward. Your positive attitude makes a real difference in our school life. We are lucky to have a teacher who cares so much about our growth.' },
-    { name:'NAJLA N', role:'Teacher', seed:'teacher-13-NAJLA-N',
-      quote:'Thank you for believing in us and helping us grow.',
-      bio:'Thank you for being a teacher whose kindness and encouragement make us feel valued. Your words often give us confidence when we doubt ourselves. You have shown us that a good teacher teaches with both knowledge and heart. Thank you for every lesson, every smile, and every moment of support.' },
-    { name:'SHAFEEDHA T', role:'Teacher', seed:'teacher-14-SHAFEEDHA-T',
-      quote:'Your guidance makes every lesson worth remembering.',
-      bio:'Thank you for always being ready to guide us and encourage us when we need it. Your caring personality and dedication make you someone we truly respect. You have taught us lessons that go beyond textbooks and exams. We will always remember your support and the positive difference you made in our school life.' },
-    { name:'UMMU HABEEBA', role:'Teacher', seed:'teacher-15-UMMU-HABEEBA',
-      quote:'Thank you for making learning brighter every day.',
-      bio:'Thank you for making our school days brighter with your patience and kindness. You always encourage us to learn from our mistakes rather than be afraid of them. Your supportive words make challenges feel easier to face. We appreciate all the time and effort you have given to help us become better students.' },
-    { name:'NASEERA KODAKKADAN', role:'Teacher', seed:'teacher-16-NASEERA-KODAKKADAN',
-      quote:'A great teacher leaves a lasting mark on every student.',
-      bio:'Thank you for your dedication and for always encouraging us to give our best. Your commitment to your students shows in the way you guide and support us. You remind us that success comes from sincere effort and consistency. We are grateful for your advice, patience, and belief in our abilities.' },
-    { name:'SMITHA A', role:'Teacher', seed:'teacher-17-SMITHA-A',
-      quote:'Thank you for believing in us and helping us grow.',
-      bio:'Thank you for being a teacher who brings warmth and positivity wherever you go. Your willingness to listen and help us makes you someone we can trust. You have made many ordinary school days special through your kindness. We are thankful for your guidance and for every memory you have helped create.' },
-    { name:'RAMYA VISHNU', role:'Teacher', seed:'teacher-18-RAMYA-VISHNU',
-      quote:'Your guidance makes every lesson worth remembering.',
-      bio:'Thank you for always motivating us to move forward, even when something seems difficult. Your patience and understanding help us feel comfortable making mistakes and learning from them. You have shown us that progress matters more than perfection. Thank you for supporting us and believing that we can always improve.' },
-    { name:'SAFIYA A', role:'Teacher', seed:'teacher-19-SAFIYA-A',
-      quote:'Thank you for making learning brighter every day.',
-      bio:'Thank you for your constant encouragement and for treating every student with care and respect. Your positive words have helped us stay confident during challenging moments. You remind us that every student has potential. We truly appreciate your support and will always remember the kindness you showed us.' },
-    { name:'NISHA N M', role:'Teacher', seed:'teacher-20-NISHA-N-M',
-      quote:'A great teacher leaves a lasting mark on every student.',
-      bio:'Thank you for being so patient and dedicated to making sure your students understand. You never make us feel bad for asking questions, and that makes learning much easier. Your caring attitude inspires us to keep trying. Thank you for helping us learn with confidence and for always wanting the best for us.' },
-    { name:'MUNSHIRA K', role:'Teacher', seed:'teacher-21-MUNSHIRA-K',
-      quote:'Thank you for believing in us and helping us grow.',
-      bio:'Thank you for your friendly nature and the encouragement you give us every day. You make it easier to participate, ask questions, and learn without fear. Your dedication has helped us become more confident and responsible. We are grateful for all the effort you put into making our school experience better.' },
-    { name:'ATHIRA M P', role:'Teacher', seed:'teacher-22-ATHIRA-M-P',
-      quote:'Your guidance makes every lesson worth remembering.',
-      bio:'Thank you for always reminding us that we are capable of more than we think. Your patience and understanding make you a teacher we can look up to. You encourage us to work hard while also teaching us to learn from our experiences. Thank you for believing in your students.' },
-    { name:'HUDDA ABDUL HAMEED', role:'Teacher', seed:'teacher-23-HUDDA-ABDUL-HAMEED',
-      quote:'Thank you for making learning brighter every day.',
-      bio:'Thank you for your thoughtful guidance and for always encouraging us when we feel unsure. Your caring nature makes a lasting impression on your students. You have shown us that teaching is also about inspiring confidence and character. We are grateful for every lesson and every kind word you have shared with us.' },
-    { name:'NASEELA POOCHENGAL', role:'Teacher', seed:'teacher-24-NASEELA-POOCHENGAL',
-      quote:'A great teacher leaves a lasting mark on every student.',
-      bio:'Thank you for filling our school days with patience, kindness, and encouragement. You always make an effort to guide your students in the right direction. Your support has helped us become more confident and responsible. We truly appreciate everything you do and the care you put into teaching us.' },
-    { name:'ARJUN MADAV', role:'Teacher', seed:'teacher-25-ARJUN-MADAV',
-      quote:'Thank you for believing in us and helping us grow.',
-      bio:'Thank you for encouraging us to work hard and never give up when things become challenging. Your guidance teaches us the importance of discipline, perseverance, and confidence. You help us understand that mistakes are opportunities to improve. We are grateful for your support and for every lesson you have taught us.' },
-    { name:'THAJUNNEESA', role:'Teacher', seed:'teacher-26-THAJUNNEESA',
-      quote:'Your guidance makes every lesson worth remembering.',
-      bio:'Thank you for your kindness, patience, and constant encouragement. You always help us look at mistakes as part of learning instead of something to fear. Your positive attitude makes difficult days easier. Thank you for being more than a teacher—you have been someone who motivates us to become better people.' },
-    { name:'PRIYA N V', role:'Teacher', seed:'teacher-27-PRIYA-N-V',
-      quote:'Thank you for making learning brighter every day.',
-      bio:'Thank you for being such a caring teacher who always encourages us to put in our best effort. Your dedication and supportive nature make a real difference. You remind us to believe in ourselves and keep going even when results do not come immediately. We are truly grateful for your guidance.' },
-    { name:'JAFNI', role:'Teacher', seed:'teacher-28-JAFNI',
-      quote:'A great teacher leaves a lasting mark on every student.',
-      bio:'Thank you for making our school experience more meaningful through your kindness and support. Your friendly nature makes students feel comfortable asking for help. You always encourage us to keep learning and improving. We appreciate every bit of effort you put into guiding us and making our school memories special.' },
-    { name:'VINOD KUMAR PALATHINGAL', role:'Teacher', seed:'teacher-29-VINOD-KUMAR-PALATHINGAL',
-      quote:'Thank you for believing in us and helping us grow.',
-      bio:'Thank you for your guidance, discipline, and encouragement. You have taught us that success requires patience, consistency, and hard work. Your advice has helped us face challenges with a stronger mindset. We are grateful not only for what you teach us in class, but also for the valuable lessons you teach us about life.' },
-    { name:'SANDHYA G', role:'Teacher', seed:'teacher-30-SANDHYA-G',
-      quote:'Your guidance makes every lesson worth remembering.',
-      bio:'Thank you for always being supportive and understanding. Your encouraging words help us stay motivated even when school becomes stressful. You teach us to be responsible while also giving us confidence in our abilities. We appreciate your dedication and all the effort you put into helping us grow.' },
-    { name:'RUKKIYA E K', role:'Teacher', seed:'teacher-31-RUKKIYA-E-K',
-      quote:'Thank you for making learning brighter every day.',
-      bio:'Thank you for your patience and for always trying to bring out the best in us. Your kindness makes it easier to learn from mistakes and keep improving. You have shown us that a great teacher is someone who believes in students even before they believe in themselves. Thank you for everything.' },
-    { name:'SOUMYA A K', role:'Teacher', seed:'teacher-32-SOUMYA-A-K',
-      quote:'A great teacher leaves a lasting mark on every student.',
-      bio:'Thank you for bringing positivity and encouragement into our classroom. Your caring attitude makes us feel comfortable and confident while learning. You remind us that everyone can improve with effort and determination. We are thankful for your patience, your support, and the faith you have placed in us.' },
-    { name:'MASHOOD AHAMMED K', role:'Teacher', seed:'teacher-33-MASHOOD-AHAMMED-K',
-      quote:'Thank you for believing in us and helping us grow.',
-      bio:'Thank you for guiding us with patience and encouraging us to give our best. Your responsible and dedicated nature is something we truly respect. You teach us the importance of hard work and determination. We appreciate every opportunity you give us to learn, improve, and become more confident.' },
-    { name:'ABIDALIP K', role:'Teacher', seed:'teacher-34-ABIDALIP-K',
-      quote:'Your guidance makes every lesson worth remembering.',
-      bio:'Thank you for being a supportive and motivating teacher. You encourage us to face challenges instead of running away from them, and that lesson will stay with us for a long time. Your guidance helps us become more responsible and confident. We are truly thankful for all the effort you put into us.' },
-    { name:'SREEJA T', role:'Teacher', seed:'teacher-35-SREEJA-T',
-      quote:'Thank you for making learning brighter every day.',
-      bio:'Thank you for your warm and caring nature. You always encourage us to learn with confidence and never let mistakes make us feel discouraged. Your patience makes difficult moments easier. We are grateful for every lesson, every encouraging word, and every little thing you do for your students.' },
-    { name:'MANJUSHA', role:'Teacher', seed:'teacher-36-MANJUSHA',
-      quote:'A great teacher leaves a lasting mark on every student.',
-      bio:'Thank you for making our school days happier with your kindness and positive energy. You encourage us to work hard while reminding us to enjoy learning along the way. Your dedication and patience are truly admirable. We are thankful for the memories, guidance, and encouragement you have given us.' },
-    { name:'PRAVEENA PT', role:'Teacher', seed:'teacher-37-PRAVEENA-PT',
-      quote:'Thank you for believing in us and helping us grow.',
-      bio:'Thank you for always inspiring us to do better and keep trying. Your patience and determination show how much you care about your students. You help us through difficult lessons and difficult days with equal kindness. Thank you for supporting us and being someone we can always look up to.' },
-    { name:'FATHIMA SHERIN', role:'Teacher', seed:'teacher-38-FATHIMA-SHERIN',
-      quote:'Your guidance makes every lesson worth remembering.',
-      bio:'Thank you for your kindness and for encouraging us to believe in ourselves. You remind us that mistakes are a natural part of learning and that improvement takes time. Your supportive nature makes a real difference in our lives. We are truly grateful for your guidance, patience, and care.' },
-    { name:'THWAHA AMEEN K P', role:'Teacher', seed:'teacher-39-THWAHA-AMEEN-K-P',
-      quote:'Thank you for making learning brighter every day.',
-      bio:'Thank you for motivating us to work harder and aim higher. Your encouraging words help us believe that challenges can be overcome with determination. You teach us not to give up when something is difficult. We truly appreciate your guidance and the confidence you have helped us develop.' },
-    { name:'JAMEELA', role:'Teacher', seed:'teacher-40-JAMEELA',
-      quote:'A great teacher leaves a lasting mark on every student.',
-      bio:'Thank you for your kindness, patience, and understanding. You always make an effort to support your students and guide us when we need help. Your caring personality is something we will always remember. Thank you for being such a wonderful teacher and for making our school journey brighter.' },
-    { name:'VANDANA CHANDRASEKHAR', role:'Teacher', seed:'teacher-41-VANDANA-CHANDRASEKHAR',
-      quote:'Thank you for believing in us and helping us grow.',
-      bio:'Thank you for your dedication and for always encouraging us to become better versions of ourselves. Your thoughtful advice and patient guidance have helped us in many ways. You teach lessons that go far beyond the classroom. We truly appreciate your efforts and feel fortunate to have learned from you.' },
-    { name:'MANEESHA', role:'Teacher', seed:'teacher-42-MANEESHA',
-      quote:'Your guidance makes every lesson worth remembering.',
-      bio:'Thank you for bringing positivity and encouragement into our school life. Your caring nature makes students feel valued and supported. You remind us of the importance of kindness, confidence, and hard work. We are grateful for every moment you spend helping us and for the memories you have given us.' },
-    { name:'Naeema M', role:'Teacher', seed:'teacher-43-Naeema-M',
-      quote:'Thank you for making learning brighter every day.',
-      bio:'Thank you for being a patient and encouraging teacher who always tries to understand her students. Your guidance helps us keep going when things become difficult. You have shown us that a few kind words can make a huge difference. We are truly thankful for your support and dedication.' },
-    { name:'Suhaila Pottengal', role:'Teacher', seed:'teacher-44-Suhaila-Pottengal',
-      quote:'A great teacher leaves a lasting mark on every student.',
-      bio:'Thank you for treating your students with kindness and respect. Your patience and dedication leave a lasting impression on us. You encourage us to work hard while also reminding us to believe in ourselves. We appreciate all the guidance you have given us and the wonderful memories you have created with us.' },
-    { name:'Sneha N.K', role:'Teacher', seed:'teacher-45-Sneha-NK',
-      quote:'Thank you for believing in us and helping us grow.',
-      bio:'Thank you for always trying to bring out the best in us. Your positive attitude and constant encouragement make difficult moments feel manageable. You teach us the value of patience, effort, and perseverance. We are grateful for your support and for being a teacher who genuinely cares about our future.' },
-    { name:'Asnif P', role:'Teacher', seed:'teacher-46-Asnif-P',
-      quote:'Your guidance makes every lesson worth remembering.',
-      bio:'Thank you for your guidance and for encouraging us to improve ourselves every day. Your supportive nature gives us the confidence to try, make mistakes, and learn. You have taught us that progress comes from effort and determination. We truly appreciate your patience and everything you have done for us.' },
-    { name:'Hiba Sherin Palakkal', role:'Teacher', seed:'teacher-47-Hiba-Sherin-Palakkal',
-      quote:'Thank you for making learning brighter every day.',
-      bio:'Thank you for the kindness and positive energy you bring to our school. You encourage us to believe in ourselves and keep trying even when things are difficult. Your caring nature makes you a memorable teacher. Thank you for all the support and encouragement you have given us.' },
-    { name:'FAHSILA T', role:'Teacher', seed:'teacher-48-FAHSILA-T',
-      quote:'A great teacher leaves a lasting mark on every student.',
-      bio:'Thank you for always motivating us to become better students and better people. Your patience and dedication show how much you care about us. You encourage us to face challenges with courage and continue learning. We are truly grateful for your guidance and for every special memory you have given us.' },
-    { name:'Ladheedha Sherin P', role:'Teacher', seed:'teacher-49-Ladheedha-Sherin-P',
-      quote:'Thank you for believing in us and helping us grow.',
-      bio:'Thank you for being such a caring and understanding teacher. Your encouragement helps us feel more confident in our abilities, especially when we are unsure of ourselves. You remind us that improvement takes time and sincere effort. We are grateful for your patience, support, and kindness.' },
-    { name:'MD TAKIUDDIN', role:'Teacher', seed:'teacher-50-MD-TAKIUDDIN',
-      quote:'Your guidance makes every lesson worth remembering.',
-      bio:'Thank you for encouraging us to stay focused and work hard. Your guidance has taught us the importance of responsibility, discipline, and perseverance. You remind us that success is built through consistent effort. We truly appreciate your support and the valuable lessons you have shared with us.' },
-    { name:'NEETHU M.K', role:'Teacher', seed:'teacher-51-NEETHU-MK',
-      quote:'Thank you for making learning brighter every day.',
-      bio:'Thank you for your patience, kindness, and constant encouragement. You always try to understand your students and help us overcome difficulties. Your positive words give us confidence during challenging times. We are thankful for having a teacher who cares about our progress and always wants to see us succeed.' },
-    { name:'Vrinda P N', role:'Teacher', seed:'teacher-52-Vrinda-P-N',
-      quote:'A great teacher leaves a lasting mark on every student.',
-      bio:'Thank you for making our school journey brighter through your kindness and support. You encourage us to learn from our experiences and keep improving every day. Your dedication and caring nature are qualities we will always remember. Thank you for believing in your students and helping us grow.' },
-    { name:'MOHAMMED ASHIR P', role:'Teacher', seed:'teacher-53-MOHAMMED-ASHIR-P',
-      quote:'Thank you for believing in us and helping us grow.',
-      bio:'Thank you for being an encouraging and supportive teacher. Your guidance has taught us the importance of hard work, discipline, and confidence. You motivate us to keep moving forward when something seems difficult. We are truly grateful for your effort and for every valuable lesson you have shared with us.' },
-    { name:'LIJISHA', role:'Teacher', seed:'teacher-54-LIJISHA',
-      quote:'Your guidance makes every lesson worth remembering.',
-      bio:'Thank you for being a wonderful teacher and for adding so many positive memories to our school life. Your kindness, patience, and encouragement have helped us more than you may realise. We are thankful for every lesson and every moment of support. You will always be remembered as a special part of our school journey.' }
+  {
+    name: 'THUSHARA R',
+    role: 'Principal',
+    seed: 'teacher-1-THUSHARA-R',
+    quote: 'Thank you for believing in us and helping us grow.',
+    bio: 'Dear Ma’am, thank you for being such a wonderful principal and for guiding our school with dedication and care. Your leadership, discipline, and kindness inspire us to become better students and better people. You always encourage us to do our best and create an environment where we can learn and grow. We are truly grateful for everything you do for us. You will always be one of the most respected people in our school.'
+  },
+  {
+    name: 'MOHAMMED ASHIF P',
+    role: 'PT Sir',
+    seed: 'teacher-2-MOHAMMED-ASHIF-P',
+    quote: 'Your guidance makes every lesson worth remembering.',
+    bio: 'Dear Sir, thank you for making physical education enjoyable and teaching us the importance of fitness, teamwork, and discipline. Your energetic nature and encouraging words always motivate us to give our best. You have taught us that winning is not everything, but giving our best and never giving up is what truly matters. Thank you for being such an inspiring and supportive teacher.'
+  },
+  {
+    name: 'BINDU P',
+    role: 'Biology Ma’am',
+    seed: 'teacher-3-BINDU-P',
+    quote: 'Thank you for making learning brighter every day.',
+    bio: 'Dear Ma’am, thank you for making Biology more interesting and helping us understand the beauty of life and nature. Your patience and dedication make even difficult topics easier to learn. You always encourage us to ask questions and understand things rather than simply memorising them. Thank you for being a caring teacher who always wants the best for her students.'
+  },
+  {
+    name: 'NAJEEB RAHMAN N',
+    role: 'IT',
+    seed: 'teacher-4-NAJEEB-RAHMAN-N',
+    quote: 'A great teacher leaves a lasting mark on every student.',
+    bio: 'Dear Sir, thank you for teaching us about technology and helping us understand the world of computers and IT. Your knowledge and willingness to explain things clearly make learning much easier. You have shown us how useful technology can be when used correctly. We truly appreciate your patience, guidance, and all the effort you put into helping us learn.'
+  },
+  {
+    name: 'NISHA BALACHANDRAN',
+    role: 'Chemistry',
+    seed: 'teacher-5-NISHA-BALACHANDRAN',
+    quote: 'Thank you for believing in us and helping us grow.',
+    bio: 'Dear Ma’am, thank you for making Chemistry feel less complicated and much more interesting. Your explanations, patience, and dedication have helped us understand concepts that once seemed difficult. You always encourage us to keep trying even when we make mistakes. Thank you for being a teacher who makes learning meaningful and for believing in our abilities.'
+  },
+  {
+    name: 'RAMYA HAREESH',
+    role: 'Physics',
+    seed: 'teacher-6-RAMYA-HAREESH',
+    quote: 'Your guidance makes every lesson worth remembering.',
+    bio: 'Dear Ma’am, thank you for making Physics easier to understand and for always encouraging us to think beyond the textbook. Your way of explaining concepts helps us connect what we learn with the world around us. Your patience and dedication truly make a difference. Thank you for guiding us and making us believe that even difficult subjects can be mastered.'
+  },
+  {
+    name: 'SANDHYA M',
+    role: 'Maths',
+    seed: 'teacher-7-SANDHYA-M',
+    quote: 'Thank you for making learning brighter every day.',
+    bio: 'Dear Ma’am, thank you for helping us face Mathematics with more confidence. Your explanations and constant encouragement have made difficult problems feel possible to solve. You never give up on a student who is struggling and always encourage us to try again. Thank you for your patience, support, and for being a teacher who genuinely wants every student to succeed.'
+  },
+  {
+    name: 'K HARIKUMAR',
+    role: 'English',
+    seed: 'teacher-8-K-HARIKUMAR',
+    quote: 'A great teacher leaves a lasting mark on every student.',
+    bio: 'Dear Sir, thank you for helping us improve our English and express our thoughts with confidence. Your guidance has helped us understand not only the language but also the importance of communication. Your patience and friendly approach make your classes enjoyable. We are grateful for all the knowledge, encouragement, and confidence you have given us.'
+  },
+  {
+    name: 'THABASSUNNEESA',
+    role: 'Elementary',
+    seed: 'teacher-9-THABASSUNNEESA',
+    quote: 'Thank you for believing in us and helping us grow.',
+    bio: 'Dear Ma’am, thank you for being such a kind and caring teacher. Your patience and gentle nature make everyone feel comfortable and supported. You always encourage us to learn, improve, and become better every day. Your dedication to your students is truly admirable. Thank you for all the little things you do that make such a big difference.'
+  },
+  {
+    name: 'JUMANA FARVIN',
+    role: 'Teacher',
+    seed: 'teacher-10-JUMANA-FARVIN',
+    quote: 'Your guidance makes every lesson worth remembering.',
+    bio: 'Dear Ma’am, thank you for being a wonderful teacher who always brings positivity and encouragement into our school life. Your kindness and understanding make it easier for students to approach you whenever they need help. We appreciate every lesson, every piece of advice, and every moment you have spent helping us grow. You are truly special to us.'
+  },
+  {
+    name: 'MUFEEDA NOUSHAD',
+    role: 'Teacher',
+    seed: 'teacher-11-MUFEEDA-NOUSHAD',
+    quote: 'Thank you for making learning brighter every day.',
+    bio: 'Dear Ma’am, thank you for always supporting us and encouraging us to do better. Your calm nature and caring attitude make you someone we can always look up to. You have taught us lessons that go beyond books and classrooms. We are thankful for your guidance and for every effort you make to help your students succeed.'
+  },
+  {
+    name: 'SAJITHA K P',
+    role: 'Teacher',
+    seed: 'teacher-12-SAJITHA-K-P',
+    quote: 'A great teacher leaves a lasting mark on every student.',
+    bio: 'Dear Ma’am, your dedication towards your students is something we truly admire. Thank you for patiently guiding us whenever we face difficulties and for always encouraging us to keep moving forward. Your positive attitude makes learning a better experience. We are lucky to have a teacher like you who cares not only about our studies but also about our growth.'
+  },
+  {
+    name: 'NAJLA N',
+    role: 'Teacher',
+    seed: 'teacher-13-NAJLA-N',
+    quote: 'Thank you for believing in us and helping us grow.',
+    bio: 'Dear Ma’am, thank you for being a teacher who brings kindness, patience, and positivity into our lives. Your encouragement gives us confidence when we doubt ourselves. Every lesson and every piece of advice from you has helped us become better in some way. We will always remember your support and the wonderful memories we have made with you.'
+  },
+  {
+    name: 'SHAFEEDHA T',
+    role: 'Teacher',
+    seed: 'teacher-14-SHAFEEDHA-T',
+    quote: 'Your guidance makes every lesson worth remembering.',
+    bio: 'Dear Ma’am, thank you for always being there to guide and encourage us. Your caring personality and dedication make you a teacher we can truly appreciate. You have shown us that a great teacher is not only someone who teaches lessons but also someone who inspires students. Thank you for believing in us and helping us become better every day.'
+  },
+  {
+    name: 'UMMU HABEEBA',
+    role: 'Teacher',
+    seed: 'teacher-15-UMMU-HABEEBA',
+    quote: 'Thank you for making learning brighter every day.',
+    bio: 'Dear Ma’am, thank you for making our school days brighter with your kindness and encouragement. Your patience when teaching and your understanding nature mean a lot to us. You always motivate us to improve instead of giving up when something is difficult. We are grateful for every lesson, every smile, and every word of encouragement you have given us.'
+  },
+  {
+    name: 'NASEERA KODAKKADAN',
+    role: 'Teacher',
+    seed: 'teacher-16-NASEERA-KODAKKADAN',
+    quote: 'A great teacher leaves a lasting mark on every student.',
+    bio: 'Dear Ma’am, thank you for being such a dedicated and supportive teacher. Your hard work and commitment to your students never go unnoticed. You always encourage us to believe in ourselves and remind us that effort is just as important as results. Thank you for guiding us with care and for making our school journey more meaningful.'
+  },
+  {
+    name: 'SMITHA A',
+    role: 'Teacher',
+    seed: 'teacher-17-SMITHA-A',
+    quote: 'Thank you for believing in us and helping us grow.',
+    bio: 'Dear Ma’am, your kindness and positive attitude make you an amazing teacher. Thank you for patiently listening to us, helping us when we need it, and encouraging us to become better versions of ourselves. Your presence has made many school days more special. We will always be thankful for the knowledge, confidence, and memories you have given us.'
+  },
+  {
+    name: 'RAMYA VISHNU',
+    role: 'Teacher',
+    seed: 'teacher-18-RAMYA-VISHNU',
+    quote: 'Your guidance makes every lesson worth remembering.',
+    bio: 'Dear Ma’am, thank you for being a teacher who always encourages us to move forward. Your patience and dedication have helped us overcome many challenges. You make us feel that our efforts matter and that we should never be afraid of making mistakes. Thank you for all your guidance and for being such an important part of our school life.'
+  },
+  {
+    name: 'SAFIYA A',
+    role: 'Teacher',
+    seed: 'teacher-19-SAFIYA-A',
+    quote: 'Thank you for making learning brighter every day.',
+    bio: 'Dear Ma’am, thank you for your constant encouragement and for always treating your students with care and understanding. Your words of motivation have helped us stay confident even during difficult times. You have made learning feel more comfortable and enjoyable. We truly appreciate your effort and will always remember you as a wonderful teacher.'
+  },
+  {
+    name: 'NISHA N M',
+    role: 'Teacher',
+    seed: 'teacher-20-NISHA-N-M',
+    quote: 'A great teacher leaves a lasting mark on every student.',
+    bio: 'Dear Ma’am, thank you for bringing so much patience and dedication into your teaching. You always try to make sure that your students understand and never hesitate to explain something again. Your caring nature makes us feel supported. Thank you for helping us learn, improve, and believe that we can achieve more than we think.'
+  },
+  {
+    name: 'MUNSHIRA K',
+    role: 'Teacher',
+    seed: 'teacher-21-MUNSHIRA-K',
+    quote: 'Thank you for believing in us and helping us grow.',
+    bio: 'Dear Ma’am, thank you for all the encouragement and support you have given us. Your friendly nature and positive attitude make it easier for us to learn and participate. You have taught us to be confident, responsible, and hardworking. We are grateful for every moment you have spent helping us and for the memories you have created with us.'
+  },
+  {
+    name: 'ATHIRA M P',
+    role: 'Teacher',
+    seed: 'teacher-22-ATHIRA-M-P',
+    quote: 'Your guidance makes every lesson worth remembering.',
+    bio: 'Dear Ma’am, thank you for being someone who always motivates us to give our best. Your patience and understanding make you a teacher we can respect and trust. You have helped us realise that learning is not just about marks but also about becoming better people. Thank you for your guidance and for always believing in your students.'
+  },
+  {
+    name: 'HUDDA ABDUL HAMEED',
+    role: 'Teacher',
+    seed: 'teacher-23-HUDDA-ABDUL-HAMEED',
+    quote: 'Thank you for making learning brighter every day.',
+    bio: 'Dear Ma’am, your dedication and caring nature make you truly special. Thank you for encouraging us whenever we feel unsure and for always helping us find a way forward. Your lessons and advice will stay with us long after we leave school. We are grateful to have had the opportunity to learn from such a thoughtful and inspiring teacher.'
+  },
+  {
+    name: 'NASEELA POOCHENGAL',
+    role: 'Teacher',
+    seed: 'teacher-24-NASEELA-POOCHENGAL',
+    quote: 'A great teacher leaves a lasting mark on every student.',
+    bio: 'Dear Ma’am, thank you for filling our school days with encouragement, patience, and kindness. You always make an effort to help your students and guide us in the right direction. Your support has helped us become more confident in ourselves. Thank you for every lesson and every moment you have dedicated to making us better students.'
+  },
+  {
+    name: 'ARJUN MADAV',
+    role: 'Teacher',
+    seed: 'teacher-25-ARJUN-MADAV',
+    quote: 'Thank you for believing in us and helping us grow.',
+    bio: 'Dear Sir, thank you for being a teacher who encourages us to work hard and never give up. Your guidance and supportive nature have helped us learn from our mistakes and keep improving. You have shown us the value of discipline, confidence, and perseverance. We truly appreciate everything you have done for us.'
+  },
+  {
+    name: 'THAJUNNEESA',
+    role: 'Teacher',
+    seed: 'teacher-26-THAJUNNEESA',
+    quote: 'Your guidance makes every lesson worth remembering.',
+    bio: 'Dear Ma’am, thank you for your kindness, patience, and constant support. You always encourage us to learn from our mistakes instead of being afraid of them. Your positive words can make even a difficult day feel better. Thank you for being more than just a teacher—you have been someone who motivates us to become better people.'
+  },
+  {
+    name: 'PRIYA N V',
+    role: 'Teacher',
+    seed: 'teacher-27-PRIYA-N-V',
+    quote: 'Thank you for making learning brighter every day.',
+    bio: 'Dear Ma’am, thank you for being such a caring and encouraging teacher. Your dedication towards your students is something we deeply appreciate. You always remind us to believe in ourselves and put sincere effort into everything we do. Thank you for all your guidance, patience, and the wonderful memories you have given us.'
+  },
+  {
+    name: 'JAFNI',
+    role: 'Teacher',
+    seed: 'teacher-28-JAFNI',
+    quote: 'A great teacher leaves a lasting mark on every student.',
+    bio: 'Dear Ma’am, thank you for making our school experience more meaningful with your kindness and support. Your friendly nature makes it easy for students to learn from you and approach you when they need help. We appreciate every bit of effort you put into teaching and guiding us. You will always have a special place in our memories.'
+  },
+  {
+    name: 'VINOD KUMAR PALATHINGAL',
+    role: 'Teacher',
+    seed: 'teacher-29-VINOD-KUMAR-PALATHINGAL',
+    quote: 'Thank you for believing in us and helping us grow.',
+    bio: 'Dear Sir, thank you for your guidance, discipline, and encouragement throughout our school journey. You have taught us that success comes from consistency, hard work, and determination. Your advice has helped us look at challenges differently and keep trying. We are truly thankful for the lessons you have taught us both inside and outside the classroom.'
+  },
+  {
+    name: 'SANDHYA G',
+    role: 'Teacher',
+    seed: 'teacher-30-SANDHYA-G',
+    quote: 'Your guidance makes every lesson worth remembering.',
+    bio: 'Dear Ma’am, thank you for always being supportive and understanding towards your students. Your encouraging words and positive attitude have made a difference in our school life. You have helped us become more confident and responsible. Thank you for all the effort you put into guiding us and for making our memories at school so special.'
+  },
+  {
+    name: 'RUKKIYA E K',
+    role: 'Teacher',
+    seed: 'teacher-31-RUKKIYA-E-K',
+    quote: 'Thank you for making learning brighter every day.',
+    bio: 'Dear Ma’am, thank you for your patience, kindness, and dedication. You always try to bring out the best in your students and encourage us to keep improving. Your support has made many difficult moments easier. We are grateful for all the knowledge and life lessons you have shared with us. You are truly an amazing teacher.'
+  },
+  {
+    name: 'SOUMYA A K',
+    role: 'Teacher',
+    seed: 'teacher-32-SOUMYA-A-K',
+    quote: 'A great teacher leaves a lasting mark on every student.',
+    bio: 'Dear Ma’am, thank you for being a teacher who always brings encouragement and positivity into the classroom. Your caring attitude makes us feel comfortable and confident. You have helped us understand that every student has the ability to improve with effort. Thank you for believing in us and for being a wonderful part of our school life.'
+  },
+  {
+    name: 'MASHOOD AHAMMED K',
+    role: 'Teacher',
+    seed: 'teacher-33-MASHOOD-AHAMMED-K',
+    quote: 'Thank you for believing in us and helping us grow.',
+    bio: 'Dear Sir, thank you for guiding us with patience and encouraging us to always give our best. Your dedication and responsible nature are qualities we truly respect. You have taught us valuable lessons about hard work and determination. We are grateful for your support and for every opportunity you have given us to learn and grow.'
+  },
+  {
+    name: 'ABIDALIP K',
+    role: 'Teacher',
+    seed: 'teacher-34-ABIDALIP-K',
+    quote: 'Your guidance makes every lesson worth remembering.',
+    bio: 'Dear Sir, thank you for being such a supportive and motivating teacher. Your guidance has helped us become more confident and responsible. You always encourage us to face challenges instead of avoiding them. We appreciate your patience, your advice, and the effort you put into helping us improve. Thank you for being an important part of our journey.'
+  },
+  {
+    name: 'SREEJA T',
+    role: 'Teacher',
+    seed: 'teacher-35-SREEJA-T',
+    quote: 'Thank you for making learning brighter every day.',
+    bio: 'Dear Ma’am, thank you for your warm and caring nature. You have always encouraged us to learn with confidence and never feel discouraged by our mistakes. Your support and patience mean a lot to us. Thank you for every lesson, every encouraging word, and every moment you have spent helping us become better students.'
+  },
+  {
+    name: 'MANJUSHA',
+    role: 'Teacher',
+    seed: 'teacher-36-MANJUSHA',
+    quote: 'A great teacher leaves a lasting mark on every student.',
+    bio: 'Dear Ma’am, thank you for making our school days happier with your kindness and positive energy. You always encourage us to work hard while reminding us to enjoy the process of learning. Your dedication and patience are truly admirable. We are thankful for all the guidance you have given us and for the wonderful memories you have helped create.'
+  },
+  {
+    name: 'PRAVEENA PT',
+    role: 'Teacher',
+    seed: 'teacher-37-PRAVEENA-PT',
+    quote: 'Thank you for believing in us and helping us grow.',
+    bio: 'Dear Ma’am, thank you for being a teacher who always inspires us to do better. Your patience and determination show us the importance of never giving up. You have helped us through difficult lessons and difficult days with equal care. Thank you for always supporting us and for being someone we can look up to.'
+  },
+  {
+    name: 'FATHIMA SHERIN',
+    role: 'Teacher',
+    seed: 'teacher-38-FATHIMA-SHERIN',
+    quote: 'Your guidance makes every lesson worth remembering.',
+    bio: 'Dear Ma’am, thank you for your kindness and for always encouraging us to believe in ourselves. Your supportive nature makes a big difference in our school life. You have taught us that mistakes are part of learning and that improvement comes with patience and effort. We are truly grateful for your guidance and care.'
+  },
+  {
+    name: 'THWAHA AMEEN K P',
+    role: 'Teacher',
+    seed: 'teacher-39-THWAHA-AMEEN-K-P',
+    quote: 'Thank you for making learning brighter every day.',
+    bio: 'Dear Sir, thank you for always motivating us to work harder and aim higher. Your guidance and encouraging words have helped us become more confident in our abilities. You teach us not to be afraid of challenges and to keep trying until we succeed. Thank you for being a teacher who inspires us to do our best.'
+  },
+  {
+    name: 'JAMEELA',
+    role: 'Teacher',
+    seed: 'teacher-40-JAMEELA',
+    quote: 'A great teacher leaves a lasting mark on every student.',
+    bio: 'Dear Ma’am, thank you for your kindness, patience, and understanding. You always make an effort to support your students and help us when we need guidance. Your caring personality makes you someone we will always remember fondly. Thank you for being such a wonderful teacher and for making our school journey a little brighter.'
+  },
+  {
+    name: 'VANDANA CHANDRASEKHAR',
+    role: 'Teacher',
+    seed: 'teacher-41-VANDANA-CHANDRASEKHAR',
+    quote: 'Thank you for believing in us and helping us grow.',
+    bio: 'Dear Ma’am, thank you for your dedication and for always encouraging us to become better. Your thoughtful advice and patient guidance have helped us in many ways. You have taught us lessons that will remain useful even beyond school. We truly appreciate your efforts and feel lucky to have learned from someone as inspiring as you.'
+  },
+  {
+    name: 'MANEESHA',
+    role: 'Teacher',
+    seed: 'teacher-42-MANEESHA',
+    quote: 'Your guidance makes every lesson worth remembering.',
+    bio: 'Dear Ma’am, thank you for always bringing positivity and encouragement into our lives. Your caring nature makes us feel valued and supported. You have helped us understand the importance of confidence, kindness, and hard work. Thank you for all the time and effort you have given to us. We will always remember you with gratitude.'
+  },
+  {
+    name: 'Naeema M',
+    role: 'Teacher',
+    seed: 'teacher-43-Naeema-M',
+    quote: 'Thank you for making learning brighter every day.',
+    bio: 'Dear Ma’am, thank you for being such a patient and encouraging teacher. Your ability to understand your students and guide them with kindness is truly special. You always motivate us to keep improving and never lose hope. Thank you for all the lessons, advice, and support you have given us throughout our school life.'
+  },
+  {
+    name: 'Suhaila Pottengal',
+    role: 'Teacher',
+    seed: 'teacher-44-Suhaila-Pottengal',
+    quote: 'A great teacher leaves a lasting mark on every student.',
+    bio: 'Dear Ma’am, thank you for being a wonderful teacher who always treats students with care and respect. Your patience and dedication make a lasting impression on us. You encourage us to work hard while also reminding us to believe in ourselves. We are grateful for your guidance and for all the wonderful memories you have given us.'
+  },
+  {
+    name: 'Sneha N.K',
+    role: 'Teacher',
+    seed: 'teacher-45-Sneha-NK',
+    quote: 'Thank you for believing in us and helping us grow.',
+    bio: 'Dear Ma’am, thank you for your constant encouragement and for always trying to bring out the best in us. Your positive attitude makes a difference even when we are struggling. You have shown us the importance of patience and perseverance. Thank you for being a teacher who genuinely cares about her students and their future.'
+  },
+  {
+    name: 'Asnif P',
+    role: 'Teacher',
+    seed: 'teacher-46-Asnif-P',
+    quote: 'Your guidance makes every lesson worth remembering.',
+    bio: 'Dear Sir, thank you for your guidance and for always encouraging us to improve ourselves. Your supportive nature makes us feel confident enough to try new things and learn from our mistakes. You have taught us valuable lessons about effort and determination. We truly appreciate everything you have done to make our school journey better.'
+  },
+  {
+    name: 'Hiba Sherin Palakkal',
+    role: 'Teacher',
+    seed: 'teacher-47-Hiba-Sherin-Palakkal',
+    quote: 'Thank you for making learning brighter every day.',
+    bio: 'Dear Ma’am, thank you for your kindness and the positive energy you bring to our school life. You always encourage us to believe in ourselves and keep trying even when things become difficult. Your patience and caring nature make you a truly memorable teacher. Thank you for all the support and encouragement you have given us.'
+  },
+  {
+    name: 'FAHSILA T',
+    role: 'Teacher',
+    seed: 'teacher-48-FAHSILA-T',
+    quote: 'A great teacher leaves a lasting mark on every student.',
+    bio: 'Dear Ma’am, thank you for being a teacher who always motivates us to become better. Your patience and dedication show how much you care about your students. You have helped us gain confidence and taught us to face challenges with courage. We are truly thankful for your guidance and for every memory we have made with you.'
+  },
+  {
+    name: 'Ladheedha Sherin P',
+    role: 'Teacher',
+    seed: 'teacher-49-Ladheedha-Sherin-P',
+    quote: 'Thank you for believing in us and helping us grow.',
+    bio: 'Dear Ma’am, thank you for being such a caring and understanding teacher. Your encouragement has helped us feel more confident in ourselves and our abilities. You always remind us that improvement takes time and effort. Thank you for your patience, your support, and for making our school days more meaningful and memorable.'
+  },
+  {
+    name: 'MD TAKIUDDIN',
+    role: 'Teacher',
+    seed: 'teacher-50-MD-TAKIUDDIN',
+    quote: 'Your guidance makes every lesson worth remembering.',
+    bio: 'Dear Sir, thank you for being a dedicated teacher who always encourages us to work hard and stay focused. Your guidance has taught us the importance of responsibility and perseverance. You have helped us understand that success comes from consistent effort. We truly appreciate your support and will always be grateful for the lessons you have shared with us.'
+  },
+  {
+    name: 'NEETHU M.K',
+    role: 'Teacher',
+    seed: 'teacher-51-NEETHU-MK',
+    quote: 'Thank you for making learning brighter every day.',
+    bio: 'Dear Ma’am, thank you for your patience, kindness, and constant encouragement. You always try to understand your students and help us overcome our difficulties. Your positive words have given us confidence during challenging times. Thank you for being a teacher who cares deeply about her students and always wants to see us succeed.'
+  },
+  {
+    name: 'Vrinda P N',
+    role: 'Teacher',
+    seed: 'teacher-52-Vrinda-P-N',
+    quote: 'A great teacher leaves a lasting mark on every student.',
+    bio: 'Dear Ma’am, thank you for making our school journey brighter through your kindness and support. You always encourage us to learn from our experiences and become better every day. Your dedication and caring nature are qualities we will always remember. Thank you for everything you have taught us and for always believing in your students.'
+  },
+  {
+    name: 'MOHAMMED ASHIR P',
+    role: 'Teacher',
+    seed: 'teacher-53-MOHAMMED-ASHIR-P',
+    quote: 'Thank you for believing in us and helping us grow.',
+    bio: 'Dear Sir, thank you for being an encouraging and supportive teacher. Your guidance has helped us understand the importance of hard work, discipline, and confidence. You always motivate us to keep moving forward even when something seems difficult. We are truly grateful for your effort and for the valuable lessons you have shared with us.'
+  },
+  {
+    name: 'LIJISHA',
+    role: 'Teacher',
+    seed: 'teacher-54-LIJISHA',
+    quote: 'Your guidance makes every lesson worth remembering.',
+    bio: 'Dear Ma’am, thank you for being a wonderful teacher and for adding so many positive memories to our school life. Your kindness, patience, and encouragement have helped us in more ways than you may realise. We are thankful for every lesson and every moment of support. You will always be remembered as one of the teachers who made our school days special. ❤️'
+  }
 ];
 
   // Turns a teacher's "seed" into a placeholder cartoon-avatar picture URL.
